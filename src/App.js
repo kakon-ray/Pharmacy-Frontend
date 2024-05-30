@@ -8,6 +8,7 @@ import './App.css';
 import { Routes, Route, Link } from "react-router-dom";
 import ManageMedicine from './pages/medicine/ManageMedicine';
 import Home from './pages/home/Home';
+import MedicineAdd from './pages/medicine/MedicineAdd';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Dashboard />}>
           <Route index element={< Home />} />
           <Route path='medicine' element={< ManageMedicine />} />
+          <Route path='medicine/add' element={< MedicineAdd />} />
         </Route>
       </Routes>
     </>
