@@ -5,21 +5,39 @@ const Home = () => {
     return (
         <div class="container text-light">
             <div className='row'>
+
                 <div className='col-lg-3'>
                     <div class="card text-bg-primary mb-3">
-                        <div class="card-header">Header</div>
+                        <div class="card-header">Total Medicine Item</div>
                         <div class="card-body">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">100</h5>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div className='col-lg-3'>
+                    <div class="card text-bg-warning mb-3">
+                        <div class="card-header">Total Brand</div>
+                        <div class="card-body">
+                            <h5 class="card-title">10</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='col-lg-3'>
+                    <div class="card text-bg-warning mb-3">
+                        <div class="card-header">Purchase Price</div>
+                        <div class="card-body">
+                            <h5 class="card-title">$10000</h5>
                         </div>
                     </div>
                 </div>
                 <div className='col-lg-3'>
                     <div class="card text-bg-warning mb-3">
-                        <div class="card-header">Header</div>
+                        <div class="card-header">Selling Price</div>
                         <div class="card-body">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">$5000</h5>
                         </div>
                     </div>
                 </div>

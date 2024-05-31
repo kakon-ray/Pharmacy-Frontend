@@ -1,21 +1,47 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams  } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const MedicineAdd = () => {
+const MedicineUpdate = () => {
+
+  
+    const [medicine, setMedicine] = useState({});
 
     const token = localStorage.getItem('token')
+    let { id } = useParams();
+
+    const getSpecificMedicine = async () => {
+
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/getitem/${id=id}`, {
+                headers: {
+                    Authorization: 'Bearer' + ' ' + token,
+                },
+            });
+
+            setMedicine(response.data.medicine)
+
+        } catch (error) {
+            console.log(error);
+
+        }
+
+    }
+
+    useEffect(() => {
+        getSpecificMedicine()
+    }, [])
 
 
-    const handleSubmit = async (event) => {
+    const handleUpdate = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/medicine/add', {
+            const response = await axios.post('http://127.0.0.1:8000/api/medicine/edit', {
                 medicine_name: event.target.medicine_name.value,
                 category: event.target.category.value,
                 brand_name: event.target.brand_name.value,
@@ -23,6 +49,7 @@ const MedicineAdd = () => {
                 price: event.target.price.value,
                 expired_date: event.target.expired_date.value,
                 stock: event.target.stock.value,
+                id: id,
             }, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
@@ -56,19 +83,19 @@ const MedicineAdd = () => {
                         <Link to="/medicine" className='btn btn-primary'> Manage Medicine</Link>
                     </div>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleUpdate}>
                     <div className='row'>
                         <div className='col-lg-6'>
                             <Form.Group>
                                 <Form.Label></Form.Label>
-                                <Form.Control type="text" name='medicine_name' placeholder="Medicine Name" required/>
+                                <Form.Control type="text" defaultValue={medicine.medicine_name} name='medicine_name' placeholder="Medicine Name" />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-6'>
                             <Form.Group>
                                 <Form.Label></Form.Label>
-                                <Form.Control type="text" name='brand_name' placeholder="Company" required/>
+                                <Form.Control type="text" defaultValue={medicine.brand_name} name='brand_name' placeholder="Company" />
                             </Form.Group>
                         </div>
 
@@ -76,7 +103,7 @@ const MedicineAdd = () => {
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <Form.Label></Form.Label>
-                                <Form.Control type="text" name='category' placeholder="Category" required/>
+                                <Form.Control type="text" defaultValue={medicine.category} name='category' placeholder="Category" />
                             </Form.Group>
                         </div>
 
@@ -84,21 +111,21 @@ const MedicineAdd = () => {
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <Form.Label></Form.Label>
-                                <Form.Control type="date" name='purchase_date' placeholder="Purchase Date" required/>
+                                <Form.Control type="date" defaultValue={medicine.purchase_date} name='purchase_date' placeholder="Purchase Date" />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <Form.Label></Form.Label>
-                                <Form.Control type="number" name='price' placeholder="Price" required/>
+                                <Form.Control type="number" defaultValue={medicine.price} name='price' placeholder="Price" />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <Form.Label></Form.Label>
-                                <Form.Control type="date" name='expired_date' placeholder="Medicine Date" required/>
+                                <Form.Control type="date" defaultValue={medicine.expired_date} name='expired_date' placeholder="Medicine Date" />
                             </Form.Group>
 
                         </div>
@@ -106,7 +133,7 @@ const MedicineAdd = () => {
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <Form.Label></Form.Label>
-                                <Form.Control type="number" name='stock' placeholder="Quantity" required/>
+                                <Form.Control type="number" defaultValue={medicine.stock} name='stock' placeholder="Quantity" />
                             </Form.Group>
 
                         </div>
@@ -115,7 +142,7 @@ const MedicineAdd = () => {
 
 
                     <Button variant="primary mt-4" type="submit">
-                        Submit
+                        Update
                     </Button>
                 </form>
             </div>
@@ -123,4 +150,4 @@ const MedicineAdd = () => {
     );
 };
 
-export default MedicineAdd;
+export default MedicineUpdate;

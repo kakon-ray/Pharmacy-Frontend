@@ -1,10 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Medicine from '../svg/Medicine';
+import LogoutIcon from '../svg/LogoutIcon';
 import { Link } from 'react-router-dom';
 import CustomLink from '../customeLink/CustomLink';
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+   
+    const getToken = localStorage.getItem('token')
+    if(getToken){
+      localStorage.removeItem('token');
+      navigate("/login");
+    }
+
+  }
+
+
   return (
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white mt-3">
       <div class="position-sticky">
@@ -16,13 +32,17 @@ const Sidebar = () => {
             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
           </CustomLink>
 
-          <CustomLink  to='/medicine'>
+          <CustomLink to='/medicine'>
             <Medicine /> <span className='ps-2'>Medicine</span>
           </CustomLink>
 
-          <CustomLink  to='/medicine/add'>
+          <CustomLink to='/medicine/add'>
             <Medicine /> <span className='ps-2'>Medicine Add</span>
           </CustomLink>
+
+          <button className='list-group-item list-group-item-action py-2 ripple d-flex' onClick={handleLogout}>
+            <LogoutIcon /> <span className='ps-2'>Logout</span>
+          </button>
 
         </div>
       </div>
