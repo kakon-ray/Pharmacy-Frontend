@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useParams  } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const MedicineUpdate = () => {
 
-  
+
     const [medicine, setMedicine] = useState({});
 
     const token = localStorage.getItem('token')
@@ -17,7 +17,7 @@ const MedicineUpdate = () => {
     const getSpecificMedicine = async () => {
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/getitem/${id=id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/getitem/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -59,7 +59,7 @@ const MedicineUpdate = () => {
 
             if (response.data.success) {
                 toast.success(response.data.success)
-            }else if(response.data.error){
+            } else if (response.data.error) {
                 toast.error(response.data.error)
             }
 
@@ -75,7 +75,7 @@ const MedicineUpdate = () => {
 
     return (
         <div className='container'>
-            <ToastContainer/>
+            <ToastContainer />
             <div className='card p-4 rounded-0 border-0'>
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Medicine Add</h2>
@@ -84,17 +84,17 @@ const MedicineUpdate = () => {
                     </div>
                 </div>
                 <form onSubmit={handleUpdate}>
-                    <div className='row'>
+                    <div className='row gy-3'>
                         <div className='col-lg-6'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
+                                <lebel className="mb-2">Medicine Name</lebel>
                                 <Form.Control type="text" defaultValue={medicine.medicine_name} name='medicine_name' placeholder="Medicine Name" />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-6'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
+                                <lebel className="mb-2">Company Name</lebel>
                                 <Form.Control type="text" defaultValue={medicine.brand_name} name='brand_name' placeholder="Company" />
                             </Form.Group>
                         </div>
@@ -102,7 +102,7 @@ const MedicineUpdate = () => {
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
+                                <lebel className="mb-2">Category</lebel>
                                 <Form.Control type="text" defaultValue={medicine.category} name='category' placeholder="Category" />
                             </Form.Group>
                         </div>
@@ -110,21 +110,21 @@ const MedicineUpdate = () => {
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
+                                <lebel className="mb-2">Purchase Date</lebel>
                                 <Form.Control type="date" defaultValue={medicine.purchase_date} name='purchase_date' placeholder="Purchase Date" />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
+                                <lebel className="mb-2">Price</lebel>
                                 <Form.Control type="number" defaultValue={medicine.price} name='price' placeholder="Price" />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
+                                <lebel className="mb-2">Medicine Date</lebel>
                                 <Form.Control type="date" defaultValue={medicine.expired_date} name='expired_date' placeholder="Medicine Date" />
                             </Form.Group>
 
@@ -132,7 +132,7 @@ const MedicineUpdate = () => {
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
+                                <lebel className="mb-2">Quantity</lebel>
                                 <Form.Control type="number" defaultValue={medicine.stock} name='stock' placeholder="Quantity" />
                             </Form.Group>
 

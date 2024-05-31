@@ -32,7 +32,7 @@ const MedicineAdd = () => {
 
             if (response.data.success) {
                 toast.success(response.data.success)
-            }else if(response.data.error){
+            } else if (response.data.error) {
                 toast.error(response.data.error)
             }
 
@@ -48,7 +48,7 @@ const MedicineAdd = () => {
 
     return (
         <div className='container'>
-            <ToastContainer/>
+            <ToastContainer />
             <div className='card p-4 rounded-0 border-0'>
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Medicine Add</h2>
@@ -57,56 +57,56 @@ const MedicineAdd = () => {
                     </div>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <div className='row'>
+                    <div className='row gy-3'>
                         <div className='col-lg-6'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
-                                <Form.Control type="text" name='medicine_name' placeholder="Medicine Name" required/>
+                                <lebel className="mb-2">Medicine Name</lebel>
+                                <Form.Control type="text" name='medicine_name' placeholder="Medicine Name" required />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-6'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
-                                <Form.Control type="text" name='brand_name' placeholder="Company" required/>
+                                <lebel className="mb-2">Company Name</lebel>
+                                <Form.Control type="text" name='brand_name' placeholder="Company" required />
                             </Form.Group>
                         </div>
 
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
-                                <Form.Control type="text" name='category' placeholder="Category" required/>
+                                <lebel className="mb-2">Category</lebel>
+                                <Form.Control type="text" name='category' placeholder="Category" required />
                             </Form.Group>
                         </div>
 
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
-                                <Form.Control type="date" name='purchase_date' placeholder="Purchase Date" required/>
+                                <lebel className="mb-2">Purchase Date</lebel>
+                                <Form.Control type="date" name='purchase_date' placeholder="Purchase Date" required />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
-                                <Form.Control type="number" name='price' placeholder="Price" required/>
+                                <lebel className="mb-2">Price</lebel>
+                                <Form.Control type="number" name='price' placeholder="Price" required />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
-                                <Form.Control type="date" name='expired_date' placeholder="Medicine Date" required/>
+                                <lebel className="mb-2">Medicine Date</lebel>
+                                <Form.Control type="date" name='expired_date' placeholder="Medicine Date" required />
                             </Form.Group>
 
                         </div>
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <Form.Label></Form.Label>
-                                <Form.Control type="number" name='stock' placeholder="Quantity" required/>
+                                <lebel className="mb-2">Quantity</lebel>
+                                <Form.Control type="number" name='stock' placeholder="Quantity" required />
                             </Form.Group>
 
                         </div>
