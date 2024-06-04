@@ -40,8 +40,13 @@ const EmailVerified = () => {
 
             {response ? <div class="card mx-auto mt-5" style={{ 'width': '18rem' }}>
                 <div class="card-body">
-                    <h5 class="card-title">Your Email is Verified</h5>
-                    <Link to='/login' className='nav-link'>Login Your Account</Link>
+                    <div class="alert alert-success mb-0" role="alert">
+                        <h4 class="alert-heading">Well done!</h4>
+                        <p>Successfully verified your email please login your account</p>
+                        <hr />
+                        <Link to='/' className='nav-link'>Login Your Account</Link>
+                    </div>
+                   
                 </div>
             </div> : ""}
 

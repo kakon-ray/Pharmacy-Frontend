@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext } from 'react';
 import Medicine from '../svg/Medicine';
 import LogoutIcon from '../svg/LogoutIcon';
 import { Link } from 'react-router-dom';
 import CustomLink from '../customeLink/CustomLink';
 import { useNavigate } from "react-router-dom";
+import { TokenContext } from '../../context/TokenContext';
+
 
 const Sidebar = () => {
 
+  const [token, setToken] = useContext(TokenContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -15,6 +18,7 @@ const Sidebar = () => {
     const getToken = localStorage.getItem('token')
     if(getToken){
       localStorage.removeItem('token');
+      setToken({})
       navigate("/login");
     }
 

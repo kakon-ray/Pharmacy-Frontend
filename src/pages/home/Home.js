@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Home.css';
 
+
 const Home = () => {
+
+   
+
+
     return (
         <div class="container text-light">
             <div className='row'>

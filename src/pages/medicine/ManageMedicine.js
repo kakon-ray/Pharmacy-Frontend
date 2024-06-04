@@ -61,6 +61,8 @@ const ManageMedicine = () => {
         getMedicine()
     }, [])
 
+    
+
     return (
         <div className='container'>
             <ToastContainer />

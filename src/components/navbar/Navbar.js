@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Image from '../../components/images/user.png'
 
 const Navbar = () => {
     return (
@@ -21,14 +23,14 @@ const Navbar = () => {
                     </button>
 
 
-                    <a class="navbar-brand" href="#">
+                    <Link class="navbar-brand" to="/">
                         <img
                             src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                             height="25"
                             alt="MDB Logo"
                             loading="lazy"
                         />
-                    </a>
+                    </Link>
 
 
 
@@ -45,7 +47,7 @@ const Navbar = () => {
                                 aria-expanded="false"
                             >
                                 <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
+                                    src={Image}
                                     class="rounded-circle"
                                     height="22"
                                     alt="Avatar"

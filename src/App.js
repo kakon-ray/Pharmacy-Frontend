@@ -13,15 +13,19 @@ import EmailVerified from './pages/auth/emailverified/EmailVerified';
 import Login from './pages/auth/login/Login';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import MedicineUpdate from './pages/medicine/MedicineUpdate';
+import Registration from './pages/auth/registration/Registration';
+import { TokenListProvider } from './context/TokenContext';
+
 
 
 
 function App() {
   return (
-    <>
+    <TokenListProvider>
       <Navbar />
 
       <Routes>
+      <Route path='registration' element={< Registration />} />
       <Route path='login' element={< Login />} />
       <Route path='admin/emailverified' element={< EmailVerified />} />
 
@@ -33,7 +37,7 @@ function App() {
         </Route>
 
       </Routes>
-    </>
+    </TokenListProvider>
   );
 }
 
