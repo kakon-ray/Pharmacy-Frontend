@@ -1,16 +1,58 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { TokenContext } from "../../context/TokenContext";
+import axios from "axios";
+import Loading from "../loading/Loading";
 
 const RequireAuth = ({ children }) => {
-    
+
   let location = useLocation();
+  const [user, setUser] = useState({})
+  const [loading, setLoading] = useState(true)
 
-  const [token, setToken] = useContext(TokenContext);
+  const mytoken = localStorage.getItem("token");
 
-  
 
-  if (!token?.email) {
+  useEffect(() => {
+
+    const getToken = async () => {
+
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/me/${mytoken}`, {
+          headers: {
+            Authorization: 'Bearer' + ' ' + mytoken,
+          },
+        });
+
+        if (!response) {
+          setLoading(true)
+        }
+
+        if (response) {
+          setLoading(false)
+        }
+
+        if (response.data.user) {
+          setUser(response.data.user)
+          setLoading(false)
+        }
+
+
+      } catch (error) {
+        console.log(error);
+
+      }
+
+    }
+
+    getToken();
+
+  }, [mytoken]);
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (!user?.email) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
