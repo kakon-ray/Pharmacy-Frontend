@@ -64,6 +64,10 @@ const Login = () => {
                         </form>
 
                         <div class="card-body text-center">
+                            <Link to='/password/reset' className='nav-link'>Forget Password Password Reset</Link>
+                        </div>
+
+                        <div class="card-body text-center">
                             <Link to='/registration' className='nav-link'>Do not have any Account Registration</Link>
                         </div>
                     </div>

@@ -44,6 +44,10 @@ const Sidebar = () => {
             <Medicine /> <span className='ps-2'>Medicine Add</span>
           </CustomLink>
 
+          <CustomLink to='/manage/user'>
+            <Medicine /> <span className='ps-2'>Manage Users</span>
+          </CustomLink>
+
           <button className='list-group-item list-group-item-action py-2 ripple d-flex' onClick={handleLogout}>
             <LogoutIcon /> <span className='ps-2'>Logout</span>
           </button>
