@@ -15,27 +15,29 @@ export const TokenListProvider = (props) => {
     const getToken = async () => {
 
       try {
-          const response = await axios.get(`http://127.0.0.1:8000/api/me/${mytoken}`, {
-              headers: {
-                  Authorization: 'Bearer' + ' ' + mytoken,
-              },
-          });
-  
-          
-          if(response.data.user){
-            setToken(response.data.user)
-          }
-  
-         
-  
-      } catch (error) {
-          console.log(error);
-  
-      }
-  
-  }
+        const response = await axios.get(`http://127.0.0.1:8000/api/me/${mytoken}`, {
+          headers: {
+            Authorization: 'Bearer' + ' ' + mytoken,
+          },
+        });
 
-    getToken();
+
+        if (response.data.user) {
+          setToken(response.data.user)
+        }
+
+
+
+      } catch (error) {
+        console.log(error);
+
+      }
+
+    }
+
+    if (mytoken) {
+      getToken();
+    }
 
   }, [mytoken]);
 
