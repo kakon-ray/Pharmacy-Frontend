@@ -37,17 +37,44 @@ const ManageUser = () => {
     const userPermission = async (id) => {
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/delete/${id = id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/userpermission/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
             });
 
+            console.log(response)
             if (response.data.success) {
-                toast.success(response.data.success)
+                setUsers(response.data.users)
+                toast.success(response.data.msg)
 
-            } else if (response.data.error) {
-                toast.error(response.data.error)
+            } else if (response.data.success === false) {
+                toast.error(response.data.msg)
+            }
+
+        } catch (error) {
+            console.log(error);
+
+        }
+
+    }
+    const canclePermission = async (id) => {
+
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/canclepermission/${id = id}`, {
+                headers: {
+                    Authorization: 'Bearer' + ' ' + token,
+                },
+            });
+
+            console.log(response)
+            if (response.data.success) {
+                console.log(response.data.users)
+                setUsers(response.data.users)
+                toast.success(response.data.msg)
+
+            } else if (response.data.success === false) {
+                toast.error(response.data.msg)
             }
 
         } catch (error) {
@@ -85,13 +112,15 @@ const ManageUser = () => {
                         {
                             users?.map((item, index) => {
                                 return (
-                                    <tr className='text-center'>
+                                    <tr className='text-center' key={item.id}>
                                         <td>{index + 1}</td>
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
                                         <td className='d-flex align-items-center gap-4 justify-content-center'>
-                                            <Link to={`/medicine/update/${item.id}`}><EditIcon /></Link>
-                                            <a href='#' onClick={() => userPermission(item.id)} className='text-danger'><DeleteIcon /></a>
+                                            {
+                                                item.role == 'user' ? <a href='#' onClick={() => userPermission(item.id)} className='btn btn-success btn-sm'>Permission</a> : <a href='#' onClick={() => canclePermission(item.id)} className='btn btn-danger btn-sm'>Cancle Permission</a>
+                                            }
+                                            
                                         </td>
                                     </tr>
                                 )

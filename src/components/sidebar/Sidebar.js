@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import Medicine from '../svg/Medicine';
 import LogoutIcon from '../svg/LogoutIcon';
+import UsersIcon from '../svg/UsersIcon';
 import { Link } from 'react-router-dom';
 import CustomLink from '../customeLink/CustomLink';
 import { useNavigate } from "react-router-dom";
@@ -45,7 +46,7 @@ const Sidebar = () => {
           </CustomLink>
 
           <CustomLink to='/manage/user'>
-            <Medicine /> <span className='ps-2'>Manage Users</span>
+            <UsersIcon /> <span className='ps-2'>Manage Users</span>
           </CustomLink>
 
           <button className='list-group-item list-group-item-action py-2 ripple d-flex' onClick={handleLogout}>

@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from "react-router-dom";
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ const EmailVerified = () => {
     const token = searchParams.get('token')
     const email = searchParams.get('email')
 
+    const count = useRef(null);
 
     const handleRequest = async () => {
         try {
@@ -29,7 +30,12 @@ const EmailVerified = () => {
 
 
     useEffect(() => {
-        handleRequest()
+   
+        if(count.current == null){
+            handleRequest()
+        }
+
+        return () => { count.current = 1; }
     }, [response]);
 
 

@@ -20,7 +20,6 @@ const Registration = () => {
                 name: event.target.name.value,
                 email: event.target.email.value,
                 password: event.target.password.value,
-                password_confirmation: event.target.password_confirmation.value,
             });
 
             if (response.data.success) {
