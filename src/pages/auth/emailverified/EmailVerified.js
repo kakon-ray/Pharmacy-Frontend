@@ -17,9 +17,9 @@ const EmailVerified = () => {
                 email
             });
 
-            setResponse(response.data.success)
-
-            console.log(response.data)
+            if(response.data.success){
+                setResponse(response.data.msg)
+            }
 
         } catch (error) {
             console.log(error);
@@ -42,13 +42,22 @@ const EmailVerified = () => {
                 <div class="card-body">
                     <div class="alert alert-success mb-0" role="alert">
                         <h4 class="alert-heading">Well done!</h4>
-                        <p>Successfully verified your email please login your account</p>
+                        <p>{response}</p>
                         <hr />
-                        <Link to='/' className='nav-link'>Login Your Account</Link>
+                        <Link to='/login' className='nav-link'>Login Your Account</Link>
                     </div>
                    
                 </div>
-            </div> : ""}
+            </div> : <div class="card mx-auto mt-5" style={{ 'width': '18rem' }}>
+                <div class="card-body">
+                    <div class="alert alert-success mb-0" role="alert">
+                        <h4 class="alert-heading">Sorry</h4>
+                        <p>Your Token is Expired</p>
+                       
+                    </div>
+                   
+                </div>
+            </div>}
 
         </main>
     );

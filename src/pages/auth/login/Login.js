@@ -20,9 +20,10 @@ const Login = () => {
                 email: event.target.email.value,
                 password: event.target.password.value,
             });
-
+            console.log(response)
 
             if (response.data.token) {
+                
                 localStorage.setItem("token", response.data.token);
                 setToken(response.data)
                 navigate("/");
