@@ -53,7 +53,7 @@ const MedicineAdd = () => {
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Medicine Add</h2>
                     <div>
-                        <Link to="/medicine" className='btn btn-primary'> Manage Medicine</Link>
+                        <Link to="/admin/medicine" className='btn btn-primary'> Manage Medicine</Link>
                     </div>
                 </div>
                 <form onSubmit={handleSubmit}>
@@ -68,7 +68,10 @@ const MedicineAdd = () => {
                         <div className='col-lg-6'>
                             <Form.Group>
                                 <lebel className="mb-2">Company Name</lebel>
-                                <Form.Control type="text" name='brand_name' placeholder="Company" required />
+                                <select class="form-select" name='brand_name' aria-label=".form-select-lg example" required>
+                                    <option selected>Select Medicine Company</option>
+                                    <option value="1">One</option>
+                                </select>
                             </Form.Group>
                         </div>
 
@@ -77,6 +80,11 @@ const MedicineAdd = () => {
                             <Form.Group>
                                 <lebel className="mb-2">Category</lebel>
                                 <Form.Control type="text" name='category' placeholder="Category" required />
+                                <select class="form-select" name='brand_name' aria-label=".form-select-lg example" required>
+                                    <option selected>Select Medicine Category</option>
+                                    <option value="Tablet">Tablet</option>
+                                </select>
+                       
                             </Form.Group>
                         </div>
 

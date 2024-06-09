@@ -23,7 +23,7 @@ const Navbar = () => {
                     </button>
 
 
-                    <Link class="navbar-brand" to="/">
+                    <Link class="navbar-brand" to="/admin">
                         <img
                             src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                             height="25"

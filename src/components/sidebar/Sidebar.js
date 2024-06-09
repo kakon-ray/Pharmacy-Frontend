@@ -20,7 +20,7 @@ const Sidebar = () => {
     if(getToken){
       localStorage.removeItem('token');
       setToken({})
-      navigate("/login");
+      navigate("/");
     }
 
   }
@@ -31,21 +31,29 @@ const Sidebar = () => {
       <div class="position-sticky">
         <div class="list-group list-group-flush">
           <CustomLink
-            to='/'
+            to='/admin'
             aria-current="true"
           >
             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
           </CustomLink>
 
-          <CustomLink to='/medicine'>
+          <CustomLink to='/admin/category'>
+            <Medicine /> <span className='ps-2'>Category</span>
+          </CustomLink>
+          
+          <CustomLink to='/admin/category/add'>
+            <Medicine /> <span className='ps-2'>AddCategory</span>
+          </CustomLink>
+
+          <CustomLink to='/admin/medicine'>
             <Medicine /> <span className='ps-2'>Medicine</span>
           </CustomLink>
 
-          <CustomLink to='/medicine/add'>
+          <CustomLink to='/admin/medicine/add'>
             <Medicine /> <span className='ps-2'>Medicine Add</span>
           </CustomLink>
 
-          <CustomLink to='/manage/user'>
+          <CustomLink to='/admin/manage/user'>
             <UsersIcon /> <span className='ps-2'>Manage Users</span>
           </CustomLink>
 

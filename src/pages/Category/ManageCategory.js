@@ -7,22 +7,22 @@ import { ToastContainer, toast } from 'react-toastify';
 import EditIcon from '../../components/svg/EditIcon'
 import DeleteIcon from '../../components/svg/DeleteIcon'
 
-const ManageMedicine = () => {
+const ManageCategory = () => {
 
-    const [medicine, setMedicine] = useState([]);
+    const [category, setCategory] = useState([]);
 
     const token = localStorage.getItem('token')
 
-    const getMedicine = async () => {
+    const getCategory = async () => {
 
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/medicine', {
+            const response = await axios.get('http://127.0.0.1:8000/api/category', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
             });
 
-            setMedicine(response.data.medicine)
+            setCategory(response.data.categories)
 
         } catch (error) {
             console.log(error);
@@ -31,10 +31,10 @@ const ManageMedicine = () => {
 
     }
 
-    const medicineDelete = async (id) => {
+    const categoryDelete = async (id) => {
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/delete/${id=id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/category/delete/${id=id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -43,8 +43,8 @@ const ManageMedicine = () => {
             if (response.data.success) {
                 toast.success(response.data.success)
 
-                const newMedicine = medicine.filter(item => item.id !== id ? item : '')
-                setMedicine(newMedicine);
+                const newCategory = category.filter(item => item.id !== id ? item : '')
+                setCategory(newCategory);
 
             }else if(response.data.error){
                 toast.error(response.data.error)
@@ -58,7 +58,7 @@ const ManageMedicine = () => {
     }
 
     useEffect(() => {
-        getMedicine()
+        getCategory()
     }, [])
 
     
@@ -68,41 +68,31 @@ const ManageMedicine = () => {
             <ToastContainer />
             <div className='card p-3 rounded-0 border-0'>
                 <div className='py-4 d-flex justify-content-between'>
-                    <h2 className="text-secondary">Manage Medicine</h2>
+                    <h2 className="text-secondary">Manage Category</h2>
                     <div>
-                        <Link to="/admin/medicine/add" className='btn btn-primary'> + Add Medicine</Link>
+                        <Link to="/admin/category/add" className='btn btn-primary'> + Add Category</Link>
                     </div>
                 </div>
                 <Table striped bordered hover>
                     <thead>
                         <tr className='text-center'>
                             <th>No</th>
-                            <th>Medicine Name</th>
                             <th>Category</th>
-                            <th>Brand Name</th>
-                            <th>Purchase Date</th>
-                            <th>Price</th>
-                            <th>Expired Date</th>
-                            <th>Stock</th>
+                            <th>Category Slug</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            medicine?.map((item, index) => {
+                            category?.map((item, index) => {
                                 return (
                                     <tr className='text-center'>
                                         <td>{index + 1}</td>
-                                        <td>{item.medicine_name}</td>
-                                        <td>{item.category}</td>
-                                        <td>{item.brand_name}</td>
-                                        <td>{item.purchase_date}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.expired_date}</td>
-                                        <td>{item.stock}</td>
+                                        <td>{item.category_name}</td>
+                                        <td>{item.category_slug}</td>
                                         <td className='d-flex align-items-center gap-4 justify-content-center'>
-                                            <Link to={`/medicine/update/${item.id}`}><EditIcon/></Link>
-                                            <a href='#' onClick={()=>medicineDelete(item.id)} className='text-danger'><DeleteIcon/></a>
+                                            <Link to={`/admin/category/update/${item.id}`}><EditIcon/></Link>
+                                            <a href='#' onClick={()=>categoryDelete(item.id)} className='text-danger'><DeleteIcon/></a>
                                         </td>
                                     </tr>
                                 )
@@ -116,4 +106,4 @@ const ManageMedicine = () => {
     );
 };
 
-export default ManageMedicine;
+export default ManageCategory;

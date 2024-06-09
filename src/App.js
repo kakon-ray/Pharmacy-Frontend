@@ -18,6 +18,9 @@ import { TokenListProvider } from './context/TokenContext';
 import PasswordReset from './pages/auth/passwordreset/PasswordReset';
 import PasswordResetSubmit from './pages/auth/passwordreset/PasswordResetSubmit';
 import ManageUser from './pages/manageAdmin/ManageUser';
+import ManageCategory from './pages/Category/ManageCategory';
+import AddCategory from './pages/Category/AddCategory';
+import UpdateCategory from './pages/Category/UpdateCategory';
 
 
 
@@ -29,13 +32,18 @@ function App() {
 
       <Routes>
       <Route path='registration' element={< Registration />} />
-      <Route path='login' element={< Login />} />
+      <Route path='/' element={< Login />} />
       <Route path='admin/emailverified' element={< EmailVerified />} />
       <Route path='password/reset' element={< PasswordReset />} />
       <Route path='password/reset/submit-form' element={< PasswordResetSubmit />} />
 
-        <Route path="/" element={<RequireAuth><Dashboard /></RequireAuth>}>
+        <Route path="/admin" element={<RequireAuth><Dashboard /></RequireAuth>}>
           <Route index element={< Home />} />
+
+          <Route path='category' element={<RequireAuth>< ManageCategory /></RequireAuth>} />
+          <Route path='category/add' element={<RequireAuth>< AddCategory /></RequireAuth>} />
+          <Route path='category/update/:id' element={<RequireAuth>< UpdateCategory /></RequireAuth>} />
+
           <Route path='medicine' element={<RequireAuth>< ManageMedicine /></RequireAuth>} />
           <Route path='medicine/add' element={<RequireAuth>< MedicineAdd /></RequireAuth>} />
           <Route path='medicine/update/:id' element={<RequireAuth>< MedicineUpdate /></RequireAuth>} />
