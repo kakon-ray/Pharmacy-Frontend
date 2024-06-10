@@ -18,7 +18,6 @@ const AddCategory = () => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/category/add', {
                 category_name: event.target.category_name.value,
-                category_slug: event.target.category_slug.value,
             }, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
@@ -45,7 +44,7 @@ const AddCategory = () => {
         <div className='container'>
             <ToastContainer />
             <div className='row'>
-                <div className='col-lg-12 mx-auto'>
+                <div className='col-lg-6 mx-auto'>
                     <div className='card p-4 rounded-0 border-0'>
                         <div className='py-4 d-flex justify-content-between'>
                             <h2 className="text-secondary">Medicine Add</h2>
@@ -55,25 +54,13 @@ const AddCategory = () => {
                         </div>
                         <form onSubmit={handleSubmit}>
                             <div className='row gy-3'>
-
-                                <div className='col-lg-6'>
+                                <div className='col-lg-12'>
                                     <Form.Group>
                                         <lebel className="mb-2">Category Name</lebel>
                                         <Form.Control type="text" name='category_name' placeholder="Medicine Name" required />
                                     </Form.Group>
                                 </div>
-
-                                <div className='col-lg-6'>
-                                    <Form.Group>
-                                        <lebel className="mb-2">Category Slug</lebel>
-                                        <Form.Control type="text" name='category_slug' placeholder="Category Name" required />
-                                    </Form.Group>
-                                </div>
-
-
                             </div>
-
-
                             <Button variant="primary mt-4" type="submit">
                                 Submit
                             </Button>

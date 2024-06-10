@@ -10,6 +10,8 @@ const MedicineUpdate = () => {
 
 
     const [medicine, setMedicine] = useState({});
+    const [categories, setCategory] = useState([]);
+    const [companyes, setCompany] = useState([]);
 
     const token = localStorage.getItem('token')
     let { id } = useParams();
@@ -24,6 +26,8 @@ const MedicineUpdate = () => {
             });
 
             setMedicine(response.data.medicine)
+            setCategory(response.data.categories)
+            setCompany(response.data.companyes)
 
         } catch (error) {
             console.log(error);
@@ -97,7 +101,11 @@ const MedicineUpdate = () => {
                                 <lebel className="mb-2">Company Name</lebel>
                                 <select class="form-select" name='company_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Company</option>
-                                    <option value="1">One</option>
+                                    {
+                                        companyes?.map(item => {
+                                            return <option value={item.id}>{item.company_name}</option>
+                                        })
+                                    }
                                 </select>
                             </Form.Group>
                         </div>
@@ -108,7 +116,12 @@ const MedicineUpdate = () => {
                                 <lebel className="mb-2">Category</lebel>
                                 <select class="form-select" name='category_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Category</option>
-                                    <option value="1">Tablet</option>
+                                    {
+                                        categories.map(item => {
+                                            return <option value={item.id}>{item.category_name}</option>
+                                        })
+                                    }
+                                    
                                 </select>
                        
                             </Form.Group>

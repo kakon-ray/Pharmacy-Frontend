@@ -43,17 +43,16 @@ const UpdateCategory = () => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/category/edit', {
                 category_name: event.target.category_name.value,
-                category_slug: event.target.category_slug.value,
                 id: id,
             }, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
             });
-
+            console.log(response)
             if (response.data.success) {
                 toast.success(response.data.msg)
-            } else if (response.data.success) {
+            } else{
                 toast.error(response.data.msg)
             }
 
@@ -70,38 +69,34 @@ const UpdateCategory = () => {
     return (
         <div className='container'>
             <ToastContainer />
-            <div className='card p-4 rounded-0 border-0'>
-                <div className='py-4 d-flex justify-content-between'>
-                    <h2 className="text-secondary">Medicine Add</h2>
-                    <div>
-                        <Link to="/admin/medicine" className='btn btn-primary'> Manage Medicine</Link>
+            <div className='row'>
+                <div className='col-lg-6 mx-auto'>
+                    <div className='card p-4 rounded-0 border-0'>
+                        <div className='py-4 d-flex justify-content-between'>
+                            <h2 className="text-secondary">Medicine Add</h2>
+                            <div>
+                                <Link to="/admin/medicine" className='btn btn-primary'> Manage Medicine</Link>
+                            </div>
+                        </div>
+                        <form onSubmit={handleUpdate}>
+                            <div className='row gy-3'>
+
+                                <div className='col-lg-12'>
+                                    <Form.Group>
+                                        <lebel className="mb-2">Category Name</lebel>
+                                        <Form.Control type="text" name='category_name' defaultValue={category.category_name} placeholder="Medicine Name" required />
+                                    </Form.Group>
+                                </div>
+
+                            </div>
+
+
+                            <Button variant="primary mt-4" type="submit">
+                                Update
+                            </Button>
+                        </form>
                     </div>
                 </div>
-                <form onSubmit={handleUpdate}>
-                    <div className='row gy-3'>
-
-                        <div className='col-lg-6'>
-                            <Form.Group>
-                                <lebel className="mb-2">Category Name</lebel>
-                                <Form.Control type="text" name='category_name' defaultValue={category.category_name} placeholder="Medicine Name" required />
-                            </Form.Group>
-                        </div>
-
-                        <div className='col-lg-6'>
-                            <Form.Group>
-                                <lebel className="mb-2">Category Slug</lebel>
-                                <Form.Control type="text" name='category_slug' defaultValue={category.category_slug} placeholder="Category Name" required />
-                            </Form.Group>
-                        </div>
-
-
-                    </div>
-
-
-                    <Button variant="primary mt-4" type="submit">
-                        Update
-                    </Button>
-                </form>
             </div>
         </div>
     );

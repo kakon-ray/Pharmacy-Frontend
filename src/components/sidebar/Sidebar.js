@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import CustomLink from '../customeLink/CustomLink';
 import { useNavigate } from "react-router-dom";
 import { TokenContext } from '../../context/TokenContext';
+import Category from '../svg/Category';
+import Create from '../svg/Create';
 
 
 const Sidebar = () => {
@@ -38,11 +40,11 @@ const Sidebar = () => {
           </CustomLink>
 
           <CustomLink to='/admin/category'>
-            <Medicine /> <span className='ps-2'>Category</span>
+            <Category /> <span className='ps-2'>Category</span>
           </CustomLink>
           
           <CustomLink to='/admin/category/add'>
-            <Medicine /> <span className='ps-2'>AddCategory</span>
+            <Create /> <span className='ps-2'>AddCategory</span>
           </CustomLink>
 
           <CustomLink to='/admin/medicine'>
@@ -50,7 +52,7 @@ const Sidebar = () => {
           </CustomLink>
 
           <CustomLink to='/admin/medicine/add'>
-            <Medicine /> <span className='ps-2'>Medicine Add</span>
+            <Create /> <span className='ps-2'>Medicine Add</span>
           </CustomLink>
 
           <CustomLink to='/admin/manage/user'>
