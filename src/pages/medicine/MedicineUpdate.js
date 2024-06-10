@@ -43,8 +43,8 @@ const MedicineUpdate = () => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/medicine/edit', {
                 medicine_name: event.target.medicine_name.value,
-                category: event.target.category.value,
-                brand_name: event.target.brand_name.value,
+                category_id: event.target.category_id.value,
+                company_id: event.target.company_id.value,
                 purchase_date: event.target.purchase_date.value,
                 price: event.target.price.value,
                 expired_date: event.target.expired_date.value,
@@ -56,7 +56,7 @@ const MedicineUpdate = () => {
                 },
             });
 
-
+         console.log(response)
             if (response.data.success) {
                 toast.success(response.data.success)
             } else if (response.data.error) {
@@ -91,11 +91,14 @@ const MedicineUpdate = () => {
                                 <Form.Control type="text" defaultValue={medicine.medicine_name} name='medicine_name' placeholder="Medicine Name" />
                             </Form.Group>
                         </div>
-
+                        
                         <div className='col-lg-6'>
                             <Form.Group>
                                 <lebel className="mb-2">Company Name</lebel>
-                                <Form.Control type="text" defaultValue={medicine.brand_name} name='brand_name' placeholder="Company" />
+                                <select class="form-select" name='company_id' aria-label=".form-select-lg example" required>
+                                    <option selected>Select Medicine Company</option>
+                                    <option value="1">One</option>
+                                </select>
                             </Form.Group>
                         </div>
 
@@ -103,7 +106,11 @@ const MedicineUpdate = () => {
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <lebel className="mb-2">Category</lebel>
-                                <Form.Control type="text" defaultValue={medicine.category} name='category' placeholder="Category" />
+                                <select class="form-select" name='category_id' aria-label=".form-select-lg example" required>
+                                    <option selected>Select Medicine Category</option>
+                                    <option value="1">Tablet</option>
+                                </select>
+                       
                             </Form.Group>
                         </div>
 

@@ -21,8 +21,9 @@ const ManageMedicine = () => {
                     Authorization: 'Bearer' + ' ' + token,
                 },
             });
-
-            setMedicine(response.data.medicine)
+            
+            setMedicine(response.data)
+            console.log(response)
 
         } catch (error) {
             console.log(error);
@@ -39,7 +40,7 @@ const ManageMedicine = () => {
                     Authorization: 'Bearer' + ' ' + token,
                 },
             });
-
+            
             if (response.data.success) {
                 toast.success(response.data.success)
 
@@ -79,7 +80,7 @@ const ManageMedicine = () => {
                             <th>No</th>
                             <th>Medicine Name</th>
                             <th>Category</th>
-                            <th>Brand Name</th>
+                            <th>Company</th>
                             <th>Purchase Date</th>
                             <th>Price</th>
                             <th>Expired Date</th>
@@ -89,19 +90,19 @@ const ManageMedicine = () => {
                     </thead>
                     <tbody>
                         {
-                            medicine?.map((item, index) => {
+                            medicine?.medicine?.map((item, index) => {
                                 return (
                                     <tr className='text-center'>
                                         <td>{index + 1}</td>
                                         <td>{item.medicine_name}</td>
-                                        <td>{item.category}</td>
-                                        <td>{item.brand_name}</td>
+                                        <td>{item?.category?.category_name}</td>
+                                        <td>{item?.company?.company_name}</td>
                                         <td>{item.purchase_date}</td>
                                         <td>{item.price}</td>
                                         <td>{item.expired_date}</td>
                                         <td>{item.stock}</td>
                                         <td className='d-flex align-items-center gap-4 justify-content-center'>
-                                            <Link to={`/medicine/update/${item.id}`}><EditIcon/></Link>
+                                            <Link to={`/admin/medicine/update/${item.id}`}><EditIcon/></Link>
                                             <a href='#' onClick={()=>medicineDelete(item.id)} className='text-danger'><DeleteIcon/></a>
                                         </td>
                                     </tr>
