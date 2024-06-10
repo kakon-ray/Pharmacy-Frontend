@@ -49,7 +49,7 @@ const UpdateCategory = () => {
                     Authorization: 'Bearer' + ' ' + token,
                 },
             });
-            console.log(response)
+
             if (response.data.success) {
                 toast.success(response.data.msg)
             } else{
