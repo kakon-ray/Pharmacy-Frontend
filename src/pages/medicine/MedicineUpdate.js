@@ -104,7 +104,7 @@ const MedicineUpdate = () => {
                                     <option selected>Select Medicine Company</option>
                                     {
                                         companyes?.map(company => {
-                                            return <option value={company.id}>{company.company_name}</option>
+                                            return <option value={company.id} selected={company.id === medicine.company_id}>{company.company_name}</option>
                                         })
                                     }
                                 </select>
@@ -119,7 +119,7 @@ const MedicineUpdate = () => {
                                     <option selected>Select Medicine Category</option>
                                     {
                                         categories.map(category => {
-                                            return <option value={category.id}>{category.category_name}</option>
+                                            return <option value={category.id} selected={category.id === medicine.category_id}>{category.category_name}</option>
                                         })
                                     }
                                     
