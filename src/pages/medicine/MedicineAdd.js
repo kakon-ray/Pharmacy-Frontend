@@ -29,13 +29,13 @@ const MedicineAdd = () => {
                 },
             });
 
-        console.log(response)
+        console.log(response.data)
 
-            // if (response.data.medicine) {
-            //     toast.success(response.data.medicine)
-            // } else if (response.data.error) {
-            //     toast.error(response.data.error)
-            // }
+            if (response.data.success) {
+                toast.success(response.data.msg)
+            } else{
+                toast.error(response.data.msg)
+            }
 
 
 

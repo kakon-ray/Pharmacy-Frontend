@@ -44,7 +44,15 @@ const Sidebar = () => {
           </CustomLink>
           
           <CustomLink to='/admin/category/add'>
-            <Create /> <span className='ps-2'>AddCategory</span>
+            <Create /> <span className='ps-2'>Add Category</span>
+          </CustomLink>
+
+          <CustomLink to='/admin/company'>
+            <Category /> <span className='ps-2'>Company</span>
+          </CustomLink>
+          
+          <CustomLink to='/admin/company/add'>
+            <Create /> <span className='ps-2'>Add Company</span>
           </CustomLink>
 
           <CustomLink to='/admin/medicine'>

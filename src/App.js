@@ -21,6 +21,9 @@ import ManageUser from './pages/manageAdmin/ManageUser';
 import ManageCategory from './pages/Category/ManageCategory';
 import AddCategory from './pages/Category/AddCategory';
 import UpdateCategory from './pages/Category/UpdateCategory';
+import ManageCompany from './pages/company/ManageCompany';
+import AddCompany from './pages/company/AddCompany';
+import UpdateCompany from './pages/company/UpdateCompany';
 
 
 
@@ -43,6 +46,11 @@ function App() {
           <Route path='category' element={<RequireAuth>< ManageCategory /></RequireAuth>} />
           <Route path='category/add' element={<RequireAuth>< AddCategory /></RequireAuth>} />
           <Route path='category/update/:id' element={<RequireAuth>< UpdateCategory /></RequireAuth>} />
+
+          <Route path='company' element={<RequireAuth>< ManageCompany /></RequireAuth>} />
+          <Route path='company/add' element={<RequireAuth>< AddCompany /></RequireAuth>} />
+          <Route path='company/update/:id' element={<RequireAuth>< UpdateCompany /></RequireAuth>} />
+
 
           <Route path='medicine' element={<RequireAuth>< ManageMedicine /></RequireAuth>} />
           <Route path='medicine/add' element={<RequireAuth>< MedicineAdd /></RequireAuth>} />
