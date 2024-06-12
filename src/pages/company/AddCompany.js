@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const AddCompany = () => {
+
 
     const token = localStorage.getItem('token')
 
@@ -39,6 +40,9 @@ const AddCompany = () => {
         }
 
     }
+
+
+
 
     return (
         <div className='container'>

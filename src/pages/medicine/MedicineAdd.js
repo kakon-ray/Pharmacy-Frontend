@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const MedicineAdd = () => {
 
+    const [categories, setCategory] = useState([]);
+    const [company, setCompany] = useState([]);
     const token = localStorage.getItem('token')
 
 
@@ -29,7 +31,7 @@ const MedicineAdd = () => {
                 },
             });
 
-        console.log(response.data)
+        console.log(response.data.success)
 
             if (response.data.success) {
                 toast.success(response.data.msg)
@@ -45,6 +47,30 @@ const MedicineAdd = () => {
         }
 
     }
+
+
+    const getCompanyCategory= async () => {
+
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/get/company/category`, {
+                headers: {
+                    Authorization: 'Bearer' + ' ' + token,
+                },
+            });
+
+            setCompany(response.data.companyes)
+            setCategory(response.data.categories)
+
+        } catch (error) {
+            console.log(error);
+
+        }
+
+    }
+
+    useEffect(()=>{
+        getCompanyCategory()
+    },[])
 
 
     return (
@@ -71,7 +97,10 @@ const MedicineAdd = () => {
                                 <lebel className="mb-2">Company Name</lebel>
                                 <select class="form-select" name='company_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Company</option>
-                                    <option value="1">One</option>
+                                    {company.map(item => {
+                                        return <option value={item.id}>{item.company_name}</option>
+                                    })}
+                                    
                                 </select>
                             </Form.Group>
                         </div>
@@ -82,7 +111,11 @@ const MedicineAdd = () => {
                                 <lebel className="mb-2">Category</lebel>
                                 <select class="form-select" name='category_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Category</option>
-                                    <option value="1">Tablet</option>
+                                    {
+                                        categories.map(item => {
+                                            return <option value={item.id}>{item.category_name}</option>
+                                        })
+                                    }
                                 </select>
                        
                             </Form.Group>
