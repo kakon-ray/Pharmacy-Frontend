@@ -22,7 +22,8 @@ const MedicineAdd = () => {
                 category_id: event.target.category_id.value,
                 company_id: event.target.company_id.value,
                 purchase_date: event.target.purchase_date.value,
-                price: event.target.price.value,
+                purchase_price: event.target.purchase_price.value,
+                selling_price: event.target.selling_price.value,
                 expired_date: event.target.expired_date.value,
                 stock: event.target.stock.value,
             }, {
@@ -31,7 +32,6 @@ const MedicineAdd = () => {
                 },
             });
 
-        console.log(response.data.success)
 
             if (response.data.success) {
                 toast.success(response.data.msg)
@@ -131,8 +131,14 @@ const MedicineAdd = () => {
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <lebel className="mb-2">Price</lebel>
-                                <Form.Control type="number" name='price' placeholder="Price" required />
+                                <lebel className="mb-2">Purchase Price</lebel>
+                                <Form.Control type="number" name='purchase_price' placeholder="Purchase Price" required />
+                            </Form.Group>
+                        </div>
+                        <div className='col-lg-3'>
+                            <Form.Group>
+                                <lebel className="mb-2">Selling Price</lebel>
+                                <Form.Control type="number" name='selling_price' placeholder="Selling Price" required />
                             </Form.Group>
                         </div>
 

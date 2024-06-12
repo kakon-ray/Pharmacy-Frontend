@@ -50,7 +50,8 @@ const MedicineUpdate = () => {
                 category_id: event.target.category_id.value,
                 company_id: event.target.company_id.value,
                 purchase_date: event.target.purchase_date.value,
-                price: event.target.price.value,
+                purchase_price: event.target.purchase_price.value,
+                selling_price: event.target.selling_price.value,
                 expired_date: event.target.expired_date.value,
                 stock: event.target.stock.value,
                 id: id,
@@ -102,8 +103,8 @@ const MedicineUpdate = () => {
                                 <select class="form-select" name='company_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Company</option>
                                     {
-                                        companyes?.map(item => {
-                                            return <option value={item.id}>{item.company_name}</option>
+                                        companyes?.map(company => {
+                                            return <option value={company.id}>{company.company_name}</option>
                                         })
                                     }
                                 </select>
@@ -117,8 +118,8 @@ const MedicineUpdate = () => {
                                 <select class="form-select" name='category_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Category</option>
                                     {
-                                        categories.map(item => {
-                                            return <option value={item.id}>{item.category_name}</option>
+                                        categories.map(category => {
+                                            return <option value={category.id}>{category.category_name}</option>
                                         })
                                     }
                                     
@@ -137,8 +138,15 @@ const MedicineUpdate = () => {
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <lebel className="mb-2">Price</lebel>
-                                <Form.Control type="number" defaultValue={medicine.price} name='price' placeholder="Price" />
+                                <lebel className="mb-2">Purchase Price</lebel>
+                                <Form.Control type="number" defaultValue={medicine.purchase_price} name='purchase_price' placeholder="Price" />
+                            </Form.Group>
+                        </div>
+
+                        <div className='col-lg-3'>
+                            <Form.Group>
+                                <lebel className="mb-2">Selling Price</lebel>
+                                <Form.Control type="number" defaultValue={medicine.selling_price} name='selling_price' placeholder="Price" />
                             </Form.Group>
                         </div>
 

@@ -82,7 +82,8 @@ const ManageMedicine = () => {
                             <th>Category</th>
                             <th>Company</th>
                             <th>Purchase Date</th>
-                            <th>Price</th>
+                            <th>Purchase Price</th>
+                            <th>Selling Price</th>
                             <th>Expired Date</th>
                             <th>Stock</th>
                             <th>Action</th>
@@ -98,7 +99,8 @@ const ManageMedicine = () => {
                                         <td>{item?.category?.category_name}</td>
                                         <td>{item?.company?.company_name}</td>
                                         <td>{item.purchase_date}</td>
-                                        <td>{item.price}</td>
+                                        <td>{item.purchase_price}</td>
+                                        <td>{item.selling_price}</td>
                                         <td>{item.expired_date}</td>
                                         <td>{item.stock}</td>
                                         <td className='d-flex align-items-center gap-4 justify-content-center'>
