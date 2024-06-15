@@ -12,11 +12,11 @@ import './ManageMedicine.css'
 const ManageMedicine = () => {
 
     const [medicine, setMedicine] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
+
 
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const [filteredItems, setFilteredItems] = useState(medicine);
+    const [data, setFinalFilterData] = useState(medicine);
 
     const token = localStorage.getItem('token')
 
@@ -30,7 +30,8 @@ const ManageMedicine = () => {
             });
 
             setMedicine(response.data.medicine)
-            console.log(response)
+            setFinalFilterData(response.data.medicine)
+
 
         } catch (error) {
             console.log(error);
@@ -71,12 +72,15 @@ const ManageMedicine = () => {
     }, [])
 
     const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
+        const filteredData = medicine?.filter(item =>
+            item.medicine_name.toLowerCase().includes(event.target.value.toLowerCase())
+        );
+
+        setFinalFilterData(filteredData)
+
     };
 
-    const filteredData = medicine?.filter(item =>
-        item.medicine_name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+   
 
     const handleFilter = () => {
         const start = new Date(startDate);
@@ -85,17 +89,14 @@ const ManageMedicine = () => {
             const itemDate = new Date(item.purchase_date);
             return itemDate >= start && itemDate <= end;
         });
-        setMedicine(filtered);
+        setFinalFilterData(filtered);
     };
 
-
-
-
-    const totalPurchasePrice = filteredData.reduce((accumulator, item) => {
+    const totalPurchasePrice = data.reduce((accumulator, item) => {
         return parseFloat(accumulator) + parseFloat(item.purchase_price);
     }, 0);
 
-    const totalSellingPrice = filteredData.reduce((accumulator, item) => {
+    const totalSellingPrice = data.reduce((accumulator, item) => {
         return parseFloat(accumulator) + parseFloat(item.selling_price);
     }, 0);
 
@@ -134,8 +135,8 @@ const ManageMedicine = () => {
                     </div>
 
                     <div className='search-medicine'>
-                        <Form.Control type="text" name='search_medicine' placeholder="Search Medicine" value={searchQuery}
-                            onChange={handleSearchChange} />
+                        <Form.Control type="text" name='search_medicine' placeholder="Search Medicine"
+                            onChange={(event)=>handleSearchChange(event)} />
                     </div>
                 </div>
                 <div className='table-responsive'>
@@ -156,7 +157,7 @@ const ManageMedicine = () => {
                         </thead>
                         <tbody>
                             {
-                                filteredData?.map((item, index) => {
+                                data.map((item, index) => {
                                     return (
                                         <tr className='text-center' key={index}>
                                             <td>{index + 1}</td>
