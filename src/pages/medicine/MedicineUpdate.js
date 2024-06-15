@@ -152,7 +152,7 @@ const MedicineUpdate = () => {
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <lebel className="mb-2">Medicine Date</lebel>
+                                <lebel className="mb-2">Expired Date</lebel>
                                 <Form.Control type="date" defaultValue={medicine.expired_date} name='expired_date' placeholder="Medicine Date" />
                             </Form.Group>
 

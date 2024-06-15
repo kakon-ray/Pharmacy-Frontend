@@ -144,7 +144,7 @@ const MedicineAdd = () => {
 
                         <div className='col-lg-3'>
                             <Form.Group>
-                                <lebel className="mb-2">Medicine Date</lebel>
+                                <lebel className="mb-2">Expired Date</lebel>
                                 <Form.Control type="date" name='expired_date' placeholder="Medicine Date" required />
                             </Form.Group>
 

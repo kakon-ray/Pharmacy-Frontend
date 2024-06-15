@@ -1,0 +1,28 @@
+
+.search-medicine{
+    width: 25%;
+}
+
+@media (max-width: 576px) { 
+.responsive-filter{
+    flex-direction: column;
+}
+
+.search-medicine{
+    width: 100%;
+    margin-top: 10px;
+}
+
+}
+
+
+@media (min-width: 768px) { }
+
+
+@media (min-width: 992px) { }
+
+
+@media (min-width: 1200px) {  }
+
+
+@media (min-width: 1400px) {  }

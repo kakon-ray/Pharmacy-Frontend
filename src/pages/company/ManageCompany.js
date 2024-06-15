@@ -41,13 +41,13 @@ const ManageCompany = () => {
             });
 
             if (response.data.success) {
-                toast.success(response.data.success)
+                toast.success(response.data.msg)
 
                 const newcompany = company.filter(item => item.id !== id ? item : '')
                 setcompany(newcompany);
 
-            }else if(response.data.error){
-                toast.error(response.data.error)
+            }else{
+                toast.error(response.data.msg)
             }
 
         } catch (error) {
