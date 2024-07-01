@@ -234,9 +234,10 @@ const ManageMedicine = () => {
             <div className='card p-3 rounded-0 border-0'>
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Manage Medicine</h2>
-                    <div>
+                    { user.role === 'admin'?  <div>
                         <Link to="/admin/medicine/add" className='btn btn-primary'> + Add Medicine</Link>
-                    </div>
+                    </div> : ''}
+                   
                 </div>
 
                 <div className='d-flex justify-content-between my-4 responsive-filter'>

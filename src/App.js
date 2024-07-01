@@ -44,6 +44,7 @@ function App() {
 
       <Route path="/user" element={<UserAuth><Dashboard /></UserAuth>}>
       <Route path='manage/medicine' element={<UserAuth>< ManageMedicine /></UserAuth>} />
+      <Route path='manage/order' element={<UserAuth>< ManageOrder /></UserAuth>} />
       </Route>
 
         <Route path="/admin" element={<RequireAuth><Dashboard /></RequireAuth>}>

@@ -18,9 +18,9 @@ const Sidebar = () => {
 
 
   const handleLogout = () => {
-   
+
     const getToken = localStorage.getItem('token')
-    if(getToken){
+    if (getToken) {
       localStorage.removeItem('token');
       setToken({})
       navigate("/");
@@ -34,50 +34,55 @@ const Sidebar = () => {
       <div class="position-sticky">
         <div class="list-group list-group-flush">
           {
-            token.role === 'admin'? <>
-            <CustomLink
-            to='/admin'
-            aria-current="true"
-          >
-            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
-          </CustomLink>
+            token.role === 'admin' ? <>
+              <CustomLink
+                to='/admin'
+                aria-current="true"
+              >
+                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+              </CustomLink>
 
-          <CustomLink to='/admin/manage/order'>
-            <UsersIcon /> <span className='ps-2'>Manage Order</span>
-          </CustomLink>
+              <CustomLink to='/admin/manage/order'>
+                <UsersIcon /> <span className='ps-2'>Manage Order</span>
+              </CustomLink>
 
-          <CustomLink to='/admin/category'>
-            <Category /> <span className='ps-2'>Category</span>
-          </CustomLink>
-          
-          <CustomLink to='/admin/category/add'>
-            <Create /> <span className='ps-2'>Add Category</span>
-          </CustomLink>
+              <CustomLink to='/admin/category'>
+                <Category /> <span className='ps-2'>Category</span>
+              </CustomLink>
 
-          <CustomLink to='/admin/company'>
-            <Category /> <span className='ps-2'>Company</span>
-          </CustomLink>
-          
-          <CustomLink to='/admin/company/add'>
-            <Create /> <span className='ps-2'>Add Company</span>
-          </CustomLink>
+              <CustomLink to='/admin/category/add'>
+                <Create /> <span className='ps-2'>Add Category</span>
+              </CustomLink>
 
-          <CustomLink to='/admin/medicine'>
-            <Medicine /> <span className='ps-2'>Medicine</span>
-          </CustomLink>
+              <CustomLink to='/admin/company'>
+                <Category /> <span className='ps-2'>Company</span>
+              </CustomLink>
 
-          <CustomLink to='/admin/medicine/add'>
-            <Create /> <span className='ps-2'>Medicine Add</span>
-          </CustomLink>
+              <CustomLink to='/admin/company/add'>
+                <Create /> <span className='ps-2'>Add Company</span>
+              </CustomLink>
 
-          <CustomLink to='/admin/manage/user'>
-            <UsersIcon /> <span className='ps-2'>Manage Users</span>
-          </CustomLink>
-            </>: <CustomLink to='/user/manage/medicine'>
-            <UsersIcon /> <span className='ps-2'>Manage Medicine</span>
-          </CustomLink>
+              <CustomLink to='/admin/medicine'>
+                <Medicine /> <span className='ps-2'>Medicine</span>
+              </CustomLink>
+
+              <CustomLink to='/admin/medicine/add'>
+                <Create /> <span className='ps-2'>Medicine Add</span>
+              </CustomLink>
+
+              <CustomLink to='/admin/manage/user'>
+                <UsersIcon /> <span className='ps-2'>Manage Users</span>
+              </CustomLink>
+            </> : <>
+              <CustomLink to='/user/manage/medicine'>
+                <UsersIcon /> <span className='ps-2'>Manage Medicine</span>
+              </CustomLink>
+              <CustomLink to='/user/manage/order'>
+                <UsersIcon /> <span className='ps-2'>Manage Order</span>
+              </CustomLink>
+            </>
           }
-          
+
 
 
 

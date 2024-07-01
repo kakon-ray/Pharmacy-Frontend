@@ -47,7 +47,7 @@ const AddCategory = () => {
                 <div className='col-lg-6 mx-auto'>
                     <div className='card p-4 rounded-0 border-0'>
                         <div className='py-4 d-flex justify-content-between'>
-                            <h2 className="text-secondary">Medicine Add</h2>
+                            <h2 className="text-secondary">Category Add</h2>
                             <div>
                                 <Link to="/admin/category" className='btn btn-primary'> Manage Category</Link>
                             </div>
@@ -57,7 +57,7 @@ const AddCategory = () => {
                                 <div className='col-lg-12'>
                                     <Form.Group>
                                         <lebel className="mb-2">Category Name</lebel>
-                                        <Form.Control type="text" name='category_name' placeholder="Medicine Name" required />
+                                        <Form.Control type="text" name='category_name' placeholder="Category Name" required />
                                     </Form.Group>
                                 </div>
                             </div>

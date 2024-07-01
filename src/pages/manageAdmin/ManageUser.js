@@ -118,7 +118,7 @@ const ManageUser = () => {
                                         <td>{item.email}</td>
                                         <td className='d-flex align-items-center gap-4 justify-content-center'>
                                             {
-                                                item.role == 'user' ? <a href='#' onClick={() => userPermission(item.id)} className='btn btn-success btn-sm'>Permission</a> : <a href='#' onClick={() => canclePermission(item.id)} className='btn btn-danger btn-sm'>Cancle Permission</a>
+                                                item.role === 'user' ? <a href='#' onClick={() => userPermission(item.id)} className='btn btn-success btn-sm'>Permission</a> : <a href='#' onClick={() => canclePermission(item.id)} className='btn btn-danger btn-sm'>Cancle Permission</a>
                                             }
                                             
                                         </td>

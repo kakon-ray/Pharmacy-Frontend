@@ -1,16 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Form, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import EditIcon from '../../components/svg/EditIcon'
 import DeleteIcon from '../../components/svg/DeleteIcon'
+import { TokenContext } from '../../context/TokenContext';
 
 const ManageCompany = () => {
 
     const [orders, setOrders] = useState([]);
-
+    const [user, setToken] = useContext(TokenContext);
     
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -38,27 +39,6 @@ const ManageCompany = () => {
 
     }
 
-    const companyDelete = async (id) => {
-
-        try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/company/delete/${id=id}`, {
-                headers: {
-                    Authorization: 'Bearer' + ' ' + token,
-                },
-            });
-
-            if (response.data.success) {
-                toast.success(response.data.msg)
-            }else{
-                toast.error(response.data.msg)
-            }
-
-        } catch (error) {
-            console.log(error);
-
-        }
-
-    }
 
     useEffect(() => {
         getOrders()
@@ -95,9 +75,12 @@ const ManageCompany = () => {
             <div className='card p-3 rounded-0 border-0'>
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Order History</h2>
-                    <div>
+                    {
+                        user.role === 'admin' ?  <div>
                         <Link to="/admin/medicine" className='btn btn-primary'> + Add Order</Link>
-                    </div>
+                    </div>: ''
+                    }
+                   
                 </div>
 
                 <div className='d-flex justify-content-between my-4 responsive-filter'>
