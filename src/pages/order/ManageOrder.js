@@ -47,7 +47,7 @@ const ManageCompany = () => {
 
     const handleSearchChange = (event) => {
         const filteredData = orders?.filter(item =>
-            item.medicine.medicine_name.toLowerCase().includes(event.target.value.toLowerCase())
+            item.medicine.medicine_name.toLowerCase().includes(event.target.value.toLowerCase()) || item.order_type.toLowerCase().includes(event.target.value.toLowerCase())
         );
 
         setFinalFilterData(filteredData)
@@ -127,7 +127,7 @@ const ManageCompany = () => {
                         {
                             data?.map((item, index) => {
                                 return (
-                                    <tr className='text-center'>
+                                    <tr className='text-center' key={index}>
                                         <td>{index + 1}</td>
                                         <td>{item.medicine.medicine_name}</td>
                                         <td>{item.category.category_name}</td>

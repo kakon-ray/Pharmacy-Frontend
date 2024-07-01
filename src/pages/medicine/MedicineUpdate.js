@@ -100,7 +100,7 @@ const MedicineUpdate = () => {
                         <div className='col-lg-6'>
                             <Form.Group>
                                 <lebel className="mb-2">Company Name</lebel>
-                                <select class="form-select" name='company_id' aria-label=".form-select-lg example" required>
+                                <select className="form-select" name='company_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Company</option>
                                     {
                                         companyes?.map(company => {
@@ -115,7 +115,7 @@ const MedicineUpdate = () => {
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <lebel className="mb-2">Category</lebel>
-                                <select class="form-select" name='category_id' aria-label=".form-select-lg example" required>
+                                <select className="form-select" name='category_id' aria-label=".form-select-lg example" required>
                                     <option selected>Select Medicine Category</option>
                                     {
                                         categories.map(category => {

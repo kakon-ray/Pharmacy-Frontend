@@ -9,12 +9,12 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <nav id="main-navbar" className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
-                <div class="container-fluid">
+                <div className="container-fluid">
 
                     <button data-mdb-button-init
-                        class="navbar-toggler"
+                        className="navbar-toggler"
                         type="button"
                         data-mdb-collapse-init
                         data-mdb-target="#sidebarMenu"
@@ -22,19 +22,19 @@ const Navbar = () => {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <i class="fas fa-bars"></i>
+                        <i className="fas fa-bars"></i>
                     </button>
 
 
                     {
-                        token.role === 'admin' ? <Link class="navbar-brand" to="/admin">
+                        token.role === 'admin' ? <Link className="navbar-brand" to="/admin">
                             <img
                                 src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                                 height="25"
                                 alt="MDB Logo"
                                 loading="lazy"
                             />
-                        </Link> : <Link class="navbar-brand" to="/user/manage/medicine">
+                        </Link> : <Link className="navbar-brand" to="/user/manage/medicine">
                             <img
                                 src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                                 height="25"
@@ -47,12 +47,12 @@ const Navbar = () => {
 
 
 
-                    <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <ul className="navbar-nav ms-auto d-flex flex-row">
 
 
-                        <li class="nav-item dropdown">
+                        <li className="nav-item dropdown">
                             <a
-                                data-mdb-dropdown-init class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+                                data-mdb-dropdown-init className="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
                                 href="#"
                                 id="navbarDropdownMenuLink"
                                 role="button"
@@ -61,24 +61,24 @@ const Navbar = () => {
                             >
                                 <img
                                     src={Image}
-                                    class="rounded-circle"
+                                    className="rounded-circle"
                                     height="22"
                                     alt="Avatar"
                                     loading="lazy"
                                 />
                             </a>
                             <ul
-                                class="dropdown-menu dropdown-menu-end"
+                                className="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="navbarDropdownMenuLink"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="#">My profile</a>
+                                    <a className="dropdown-item" href="#">My profile</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">Settings</a>
+                                    <a className="dropdown-item" href="#">Settings</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <a className="dropdown-item" href="#">Logout</a>
                                 </li>
                             </ul>
                         </li>

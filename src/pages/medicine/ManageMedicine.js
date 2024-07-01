@@ -209,12 +209,33 @@ const ManageMedicine = () => {
                 },
             });
 
-            console.log(response)
+ 
             if(response.data.success){
                 toast.success(response.data.msg)
                 setOpenModal(false)
-                
-                
+
+                if (orderType === 'sell') {
+                    const updatedItems = medicine.map(item => {
+                        if (item.id == medicine_id) {
+                           
+                          return { ...item, stock: totalQuantity,selling_price:totalSellingPrice };
+                        }
+                        return item; 
+                      });
+                      
+                      setFinalFilterData(updatedItems)
+                }
+                if (orderType === 'buy') {
+                    const updatedItems = medicine.map(item => {
+                        if (item.id == medicine_id) {
+                           
+                          return { ...item, stock: totalQuantity, purchase_price:totalPurchasePrice };
+                        }
+                        return item; 
+                      });
+                      
+                      setFinalFilterData(updatedItems)
+                }
                 
             }else{
                 toast.error(response.data.msg)
@@ -299,7 +320,7 @@ const ManageMedicine = () => {
                                             <td className='d-flex align-items-center gap-4 justify-content-center'>
                                                
                                                 {
-                                                    user === 'admin'? <>
+                                                    user.role === 'admin'? <>
                                                     <Link to={`/admin/medicine/update/${item.id}`}><EditIcon /></Link>
                                                     <a href='#' onClick={() => medicineDelete(item.id)} className='text-danger'><DeleteIcon /></a>
                                                     <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
@@ -344,7 +365,7 @@ const ManageMedicine = () => {
                                 <div className='col-lg-6'>
                                     <Form.Group>
                                         <lebel className="mb-2">Medicine Select</lebel>
-                                        <select class="form-select" name='medicine_id' aria-label=".form-select-lg example" required>
+                                        <select className="form-select" name='medicine_id' aria-label=".form-select-lg example" required>
                                             <option >Select Medicine Company</option>
                                             {
                                                 medicine?.map(item => {
@@ -361,7 +382,7 @@ const ManageMedicine = () => {
                                 <div className='col-lg-6'>
                                     <Form.Group>
                                         <lebel className="mb-2">Company Name</lebel>
-                                        <select class="form-select" name='company_id' aria-label=".form-select-lg example" required>
+                                        <select className="form-select" name='company_id' aria-label=".form-select-lg example" required>
                                             <option selected>Select Medicine Company</option>
                                             {
                                                 companyes?.map(company => {
@@ -378,7 +399,7 @@ const ManageMedicine = () => {
                                 <div className='col-lg-3'>
                                     <Form.Group>
                                         <lebel className="mb-2">Category</lebel>
-                                        <select class="form-select" name='category_id' aria-label=".form-select-lg example" required>
+                                        <select className="form-select" name='category_id' aria-label=".form-select-lg example" required>
                                             <option selected>Select Medicine Category</option>
                                             {
                                                 categories.map(category => {
@@ -393,7 +414,7 @@ const ManageMedicine = () => {
                                 <div className='col-lg-3'>
                                     <Form.Group>
                                         <lebel className="mb-2">Order Type</lebel>
-                                        <select class="form-select" name='order_type' onChange={e => setOrderType(e.target.value)} required>
+                                        <select className="form-select" name='order_type' onChange={e => setOrderType(e.target.value)} required>
                                             <option selected>Select Type</option>
                                             <option value="sell">Sell</option>
                                             <option value="buy">Buy</option>

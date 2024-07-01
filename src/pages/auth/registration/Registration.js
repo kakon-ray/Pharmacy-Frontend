@@ -74,7 +74,7 @@ const Registration = () => {
                                 </div>
                             </form>
 
-                            <div class="card-body text-center">
+                            <div className="card-body text-center">
                                 <Link to='/login' className='nav-link'>Login Your Account</Link>
                             </div>
                         </div>

@@ -44,20 +44,20 @@ const EmailVerified = () => {
     return (
         <main className="text-center mt-5 pt-5">
 
-            {response ? <div class="card mx-auto mt-5" style={{ 'width': '18rem' }}>
-                <div class="card-body">
-                    <div class="alert alert-success mb-0" role="alert">
-                        <h4 class="alert-heading">Well done!</h4>
+            {response ? <div className="card mx-auto mt-5" style={{ 'width': '18rem' }}>
+                <div className="card-body">
+                    <div className="alert alert-success mb-0" role="alert">
+                        <h4 className="alert-heading">Well done!</h4>
                         <p>{response}</p>
                         <hr />
                         <Link to='/' className='nav-link'>Login Your Account</Link>
                     </div>
                    
                 </div>
-            </div> : <div class="card mx-auto mt-5" style={{ 'width': '18rem' }}>
-                <div class="card-body">
-                    <div class="alert alert-success mb-0" role="alert">
-                        <h4 class="alert-heading">Sorry</h4>
+            </div> : <div className="card mx-auto mt-5" style={{ 'width': '18rem' }}>
+                <div className="card-body">
+                    <div className="alert alert-success mb-0" role="alert">
+                        <h4 className="alert-heading">Sorry</h4>
                         <p>Your Token is Expired</p>
                        
                     </div>

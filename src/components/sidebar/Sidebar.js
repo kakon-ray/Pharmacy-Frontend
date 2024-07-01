@@ -30,16 +30,16 @@ const Sidebar = () => {
 
 
   return (
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white mt-3">
-      <div class="position-sticky">
-        <div class="list-group list-group-flush">
+    <nav id="sidebarMenu" className="collapse d-lg-block sidebar collapse bg-white mt-3">
+      <div className="position-sticky">
+        <div className="list-group list-group-flush">
           {
             token.role === 'admin' ? <>
               <CustomLink
                 to='/admin'
                 aria-current="true"
               >
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+                <i className="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
               </CustomLink>
 
               <CustomLink to='/admin/manage/order'>
