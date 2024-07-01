@@ -24,6 +24,7 @@ import UpdateCategory from './pages/Category/UpdateCategory';
 import ManageCompany from './pages/company/ManageCompany';
 import AddCompany from './pages/company/AddCompany';
 import UpdateCompany from './pages/company/UpdateCompany';
+import ManageOrder from './pages/order/ManageOrder';
 
 
 
@@ -56,6 +57,8 @@ function App() {
           <Route path='medicine/add' element={<RequireAuth>< MedicineAdd /></RequireAuth>} />
           <Route path='medicine/update/:id' element={<RequireAuth>< MedicineUpdate /></RequireAuth>} />
           <Route path='manage/user' element={<RequireAuth>< ManageUser /></RequireAuth>} />
+
+          <Route path='manage/order' element={<RequireAuth>< ManageOrder /></RequireAuth>} />
         </Route>
 
       </Routes>

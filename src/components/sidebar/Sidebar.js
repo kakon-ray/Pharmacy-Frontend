@@ -39,6 +39,10 @@ const Sidebar = () => {
             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
           </CustomLink>
 
+          <CustomLink to='/admin/manage/order'>
+            <UsersIcon /> <span className='ps-2'>Manage Order</span>
+          </CustomLink>
+
           <CustomLink to='/admin/category'>
             <Category /> <span className='ps-2'>Category</span>
           </CustomLink>
@@ -66,6 +70,8 @@ const Sidebar = () => {
           <CustomLink to='/admin/manage/user'>
             <UsersIcon /> <span className='ps-2'>Manage Users</span>
           </CustomLink>
+
+
 
           <button className='list-group-item list-group-item-action py-2 ripple d-flex' onClick={handleLogout}>
             <LogoutIcon /> <span className='ps-2'>Logout</span>

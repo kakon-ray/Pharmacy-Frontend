@@ -209,6 +209,9 @@ const ManageMedicine = () => {
             if(response.data.success){
                 toast.success(response.data.msg)
                 setOpenModal(false)
+                
+                
+                
             }else{
                 toast.error(response.data.msg)
             }
@@ -225,8 +228,8 @@ const ManageMedicine = () => {
         <div className='container-fluid'>
             <ToastContainer />
             <div className='card p-3 rounded-0 border-0'>
-                <div className='py-4 d-flex justify-content-end'>
-
+                <div className='py-4 d-flex justify-content-between'>
+                    <h2 className="text-secondary">Manage Medicine</h2>
                     <div>
                         <Link to="/admin/medicine/add" className='btn btn-primary'> + Add Medicine</Link>
                     </div>
