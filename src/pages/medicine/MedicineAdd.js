@@ -22,8 +22,8 @@ const MedicineAdd = () => {
                 category_id: event.target.category_id.value,
                 company_id: event.target.company_id.value,
                 purchase_date: event.target.purchase_date.value,
-                purchase_price: event.target.purchase_price.value,
-                selling_price: event.target.selling_price.value,
+                purchase_price: event.target.purchase_price.value ? event.target.purchase_price.value : 0,
+                selling_price: event.target.selling_price.value ? event.target.selling_price.value : 0,
                 expired_date: event.target.expired_date.value,
                 stock: event.target.stock.value,
             }, {
@@ -132,13 +132,13 @@ const MedicineAdd = () => {
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <lebel className="mb-2">Purchase Price</lebel>
-                                <Form.Control type="number" name='purchase_price' placeholder="Purchase Price" required />
+                                <Form.Control type="number" name='purchase_price' placeholder="Purchase Price" />
                             </Form.Group>
                         </div>
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <lebel className="mb-2">Selling Price</lebel>
-                                <Form.Control type="number" name='selling_price' placeholder="Selling Price" required />
+                                <Form.Control type="number" name='selling_price' placeholder="Selling Price" />
                             </Form.Group>
                         </div>
 

@@ -51,8 +51,8 @@ const MedicineUpdate = () => {
                 company_id: event.target.company_id.value,
                 purchase_date: event.target.purchase_date.value,
                 purchase_price: event.target.purchase_price.value,
-                selling_price: event.target.selling_price.value,
-                expired_date: event.target.expired_date.value,
+                selling_price: event.target.selling_price.value?event.target.selling_price.value:0,
+                expired_date: event.target.expired_date.value?event.target.expired_date.value:0,
                 stock: event.target.stock.value,
                 id: id,
             }, {
