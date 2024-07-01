@@ -16,6 +16,7 @@ const Sidebar = () => {
   const [token, setToken] = useContext(TokenContext);
   const navigate = useNavigate();
 
+
   const handleLogout = () => {
    
     const getToken = localStorage.getItem('token')
@@ -32,7 +33,9 @@ const Sidebar = () => {
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white mt-3">
       <div class="position-sticky">
         <div class="list-group list-group-flush">
-          <CustomLink
+          {
+            token.role === 'admin'? <>
+            <CustomLink
             to='/admin'
             aria-current="true"
           >
@@ -70,6 +73,11 @@ const Sidebar = () => {
           <CustomLink to='/admin/manage/user'>
             <UsersIcon /> <span className='ps-2'>Manage Users</span>
           </CustomLink>
+            </>: <CustomLink to='/user/manage/medicine'>
+            <UsersIcon /> <span className='ps-2'>Manage Medicine</span>
+          </CustomLink>
+          }
+          
 
 
 

@@ -52,15 +52,14 @@ const RequireAuth = ({ children }) => {
     return <Loading />
   }
 
-  if (user?.role === 'admin' || user?.role !== 'user') {
+  if (user?.role === 'user' || user?.role === 'admin') {
     return children;
-  }
-  else{
+    
+  }else{
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-    
 
- 
+
 };
 
 export default RequireAuth;

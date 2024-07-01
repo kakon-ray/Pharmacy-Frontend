@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../components/images/user.png'
+import { TokenContext } from '../../context/TokenContext';
 
 const Navbar = () => {
+    const [token, setToken] = useContext(TokenContext);
+
     return (
         <div>
             <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -23,14 +26,24 @@ const Navbar = () => {
                     </button>
 
 
-                    <Link class="navbar-brand" to="/admin">
-                        <img
-                            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                            height="25"
-                            alt="MDB Logo"
-                            loading="lazy"
-                        />
-                    </Link>
+                    {
+                        token.role === 'admin' ? <Link class="navbar-brand" to="/admin">
+                            <img
+                                src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                                height="25"
+                                alt="MDB Logo"
+                                loading="lazy"
+                            />
+                        </Link> : <Link class="navbar-brand" to="/user/manage/medicine">
+                            <img
+                                src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                                height="25"
+                                alt="MDB Logo"
+                                loading="lazy"
+                            />
+                        </Link>
+                    }
+
 
 
 

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Form, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +12,7 @@ import './ManageMedicine.css'
 
 
 import { Checkbox, Label, Modal, TextInput } from "flowbite-react"
+import { TokenContext } from '../../context/TokenContext';
 
 const ManageMedicine = () => {
 
@@ -28,6 +29,9 @@ const ManageMedicine = () => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [data, setFinalFilterData] = useState(medicine);
+
+    const [user, setToken] = useContext(TokenContext);
+
 
     const token = localStorage.getItem('token')
 
@@ -292,9 +296,15 @@ const ManageMedicine = () => {
                                             <td>{item.expired_date}</td>
                                             <td>{item.stock}</td>
                                             <td className='d-flex align-items-center gap-4 justify-content-center'>
-                                                <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
-                                                <Link to={`/admin/medicine/update/${item.id}`}><EditIcon /></Link>
-                                                <a href='#' onClick={() => medicineDelete(item.id)} className='text-danger'><DeleteIcon /></a>
+                                               
+                                                {
+                                                    user === 'admin'? <>
+                                                    <Link to={`/admin/medicine/update/${item.id}`}><EditIcon /></Link>
+                                                    <a href='#' onClick={() => medicineDelete(item.id)} className='text-danger'><DeleteIcon /></a>
+                                                    <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
+                                                    </>: <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
+                                                }
+                                                
                                             </td>
                                         </tr>
                                     )

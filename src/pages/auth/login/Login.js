@@ -26,7 +26,14 @@ const Login = () => {
                 
                 localStorage.setItem("token", response.data.token);
                 setToken(response.data)
-                navigate("/admin");
+                if(response.data.role === 'user'){
+                    navigate("/user/manage/medicine");
+                   
+                }else{
+                    navigate("/admin");
+                }
+               
+                
             } else {
                 toast.error('Login faild please try again')
             }

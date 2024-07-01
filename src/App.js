@@ -12,6 +12,7 @@ import MedicineAdd from './pages/medicine/MedicineAdd';
 import EmailVerified from './pages/auth/emailverified/EmailVerified';
 import Login from './pages/auth/login/Login';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import UserAuth from './components/RequireAuth/UserAuth';
 import MedicineUpdate from './pages/medicine/MedicineUpdate';
 import Registration from './pages/auth/registration/Registration';
 import { TokenListProvider } from './context/TokenContext';
@@ -40,6 +41,10 @@ function App() {
       <Route path='admin/emailverified' element={< EmailVerified />} />
       <Route path='password/reset' element={< PasswordReset />} />
       <Route path='password/reset/submit-form' element={< PasswordResetSubmit />} />
+
+      <Route path="/user" element={<UserAuth><Dashboard /></UserAuth>}>
+      <Route path='manage/medicine' element={<UserAuth>< ManageMedicine /></UserAuth>} />
+      </Route>
 
         <Route path="/admin" element={<RequireAuth><Dashboard /></RequireAuth>}>
           <Route index element={< Home />} />
