@@ -17,7 +17,7 @@ const RequireAuth = ({ children }) => {
     const getToken = async () => {
 
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/me/${mytoken}`, {
+        const response = await axios.get(`http://testapi.web-builderit.com/api/me/${mytoken}`, {
           headers: {
             Authorization: 'Bearer' + ' ' + mytoken,
           },
@@ -56,7 +56,7 @@ const RequireAuth = ({ children }) => {
     return children;
   }
   else{
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/" state={{ from: location }} replace />;
   }
     
 

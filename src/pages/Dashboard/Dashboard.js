@@ -6,7 +6,7 @@ const Dashboard = () => {
     return (
         <>
 
-            <div className='row'>
+            <div className='row' style={{height:'100vh'}}>
                 <div className='col-xl-2 col-lg-2 col-md-3 col-12 pe-0'>
                     <Sidebar />
                 </div>

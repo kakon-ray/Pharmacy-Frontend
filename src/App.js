@@ -33,7 +33,7 @@ import ManageOrder from './pages/order/ManageOrder';
 function App() {
   return (
     <TokenListProvider>
-      <Navbar />
+     
 
       <Routes>
       <Route path='registration' element={< Registration />} />

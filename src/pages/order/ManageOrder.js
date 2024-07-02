@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import EditIcon from '../../components/svg/EditIcon'
 import DeleteIcon from '../../components/svg/DeleteIcon'
 import { TokenContext } from '../../context/TokenContext';
+import Loading from '../../components/loading/Loading';
 
 const ManageCompany = () => {
 
@@ -23,7 +24,7 @@ const ManageCompany = () => {
     const getOrders = async () => {
 
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/getorder', {
+            const response = await axios.get('http://testapi.web-builderit.com/api/getorder', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -67,7 +68,10 @@ const ManageCompany = () => {
         setFinalFilterData(filtered);
     };
 
-    
+
+    if(!orders){
+        return <Loading/>
+    }
 
     return (
         <div className='container-fluid'>
@@ -109,6 +113,7 @@ const ManageCompany = () => {
                             onChange={(event) => handleSearchChange(event)} />
                     </div>
                 </div>
+                <div className='table-responsive'>
                 <Table striped bordered hover>
                     <thead>
                         <tr className='text-center'>
@@ -145,6 +150,7 @@ const ManageCompany = () => {
 
                     </tbody>
                 </Table>
+                </div>
             </div>
         </div>
     );

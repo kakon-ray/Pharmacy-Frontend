@@ -16,7 +16,7 @@ const ManageCompany = () => {
     const getcompany = async () => {
 
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/company', {
+            const response = await axios.get('http://testapi.web-builderit.com/api/company', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -34,7 +34,7 @@ const ManageCompany = () => {
     const companyDelete = async (id) => {
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/company/delete/${id=id}`, {
+            const response = await axios.get(`http://testapi.web-builderit.com/api/company/delete/${id=id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },

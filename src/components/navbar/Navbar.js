@@ -1,11 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../components/images/user.png'
 import { TokenContext } from '../../context/TokenContext';
 
-const Navbar = () => {
+const Navbar = ({setIsOn,isOn}) => {
     const [token, setToken] = useContext(TokenContext);
+   
+
+    const toggleNav = () => {
+        setIsOn(!isOn);
+    }
 
     return (
         <div>
@@ -21,6 +26,7 @@ const Navbar = () => {
                         aria-controls="sidebarMenu"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
+                        onClick={toggleNav}
                     >
                         <i className="fas fa-bars"></i>
                     </button>

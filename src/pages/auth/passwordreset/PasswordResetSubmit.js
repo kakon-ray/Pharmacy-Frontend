@@ -76,7 +76,7 @@ const PasswordResetSubmit = () => {
 
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/new-password', {
+            const response = await axios.post('http://testapi.web-builderit.com/api/new-password', {
                 email: email,
                 token: token,
                 password: password,

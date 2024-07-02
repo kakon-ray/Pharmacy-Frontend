@@ -19,7 +19,7 @@ const MedicineUpdate = () => {
     const getSpecificMedicine = async () => {
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/getitem/${id = id}`, {
+            const response = await axios.get(`http://testapi.web-builderit.com/api/medicine/getitem/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -45,7 +45,7 @@ const MedicineUpdate = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/medicine/edit', {
+            const response = await axios.post('http://testapi.web-builderit.com/api/medicine/edit', {
                 medicine_name: event.target.medicine_name.value,
                 category_id: event.target.category_id.value,
                 company_id: event.target.company_id.value,

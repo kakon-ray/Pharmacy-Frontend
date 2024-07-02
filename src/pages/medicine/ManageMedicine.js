@@ -8,6 +8,7 @@ import EditIcon from '../../components/svg/EditIcon'
 import DeleteIcon from '../../components/svg/DeleteIcon'
 import AddIcon from '../../components/svg/AddIcon'
 import CloseModal from '../../components/svg/CloseModal'
+import Loading from '../../components/loading/Loading'
 import './ManageMedicine.css'
 
 
@@ -38,7 +39,7 @@ const ManageMedicine = () => {
     const getMedicine = async () => {
 
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/medicine', {
+            const response = await axios.get('http://testapi.web-builderit.com/api/medicine', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -58,7 +59,7 @@ const ManageMedicine = () => {
     const medicineDelete = async (id) => {
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/delete/${id = id}`, {
+            const response = await axios.get(`http://testapi.web-builderit.com/api/medicine/delete/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -124,7 +125,7 @@ const ManageMedicine = () => {
         const getSpecificMedicine = async () => {
 
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/medicine/getitem/${id = id}`, {
+                const response = await axios.get(`http://testapi.web-builderit.com/api/medicine/getitem/${id = id}`, {
                     headers: {
                         Authorization: 'Bearer' + ' ' + token,
                     },
@@ -191,53 +192,53 @@ const ManageMedicine = () => {
 
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/order', {
+            const response = await axios.post('http://testapi.web-builderit.com/api/order', {
                 category_id,
                 company_id,
                 medicine_id,
                 quantity,
-                sellingPrice:sellingPrice ? sellingPrice : 0,
-                purchasePrice:purchasePrice ? purchasePrice : 0,
+                sellingPrice: sellingPrice ? sellingPrice : 0,
+                purchasePrice: purchasePrice ? purchasePrice : 0,
                 expired_date,
                 order_type,
-                totalQuantity:totalQuantity,
-                totalPurchasePrice:totalPurchasePrice?totalPurchasePrice:medicineItem.purchase_price,
-                totalSellingPrice:totalSellingPrice?totalSellingPrice:medicineItem.selling_price
+                totalQuantity: totalQuantity,
+                totalPurchasePrice: totalPurchasePrice ? totalPurchasePrice : medicineItem.purchase_price,
+                totalSellingPrice: totalSellingPrice ? totalSellingPrice : medicineItem.selling_price
             }, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
             });
 
- 
-            if(response.data.success){
+
+            if (response.data.success) {
                 toast.success(response.data.msg)
                 setOpenModal(false)
 
                 if (orderType === 'sell') {
                     const updatedItems = medicine.map(item => {
                         if (item.id == medicine_id) {
-                           
-                          return { ...item, stock: totalQuantity,selling_price:totalSellingPrice };
+
+                            return { ...item, stock: totalQuantity, selling_price: totalSellingPrice };
                         }
-                        return item; 
-                      });
-                      
-                      setFinalFilterData(updatedItems)
+                        return item;
+                    });
+
+                    setFinalFilterData(updatedItems)
                 }
                 if (orderType === 'buy') {
                     const updatedItems = medicine.map(item => {
                         if (item.id == medicine_id) {
-                           
-                          return { ...item, stock: totalQuantity, purchase_price:totalPurchasePrice };
+
+                            return { ...item, stock: totalQuantity, purchase_price: totalPurchasePrice };
                         }
-                        return item; 
-                      });
-                      
-                      setFinalFilterData(updatedItems)
+                        return item;
+                    });
+
+                    setFinalFilterData(updatedItems)
                 }
-                
-            }else{
+
+            } else {
                 toast.error(response.data.msg)
             }
 
@@ -248,17 +249,22 @@ const ManageMedicine = () => {
 
     }
 
+    if(!data){
+        return <Loading/>
+    }
+
 
     return (
         <div className='container-fluid'>
             <ToastContainer />
+
             <div className='card p-3 rounded-0 border-0'>
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Manage Medicine</h2>
-                    { user.role === 'admin'?  <div>
+                    {user.role === 'admin' ? <div>
                         <Link to="/admin/medicine/add" className='btn btn-primary'> + Add Medicine</Link>
                     </div> : ''}
-                   
+
                 </div>
 
                 <div className='d-flex justify-content-between my-4 responsive-filter'>
@@ -318,15 +324,15 @@ const ManageMedicine = () => {
                                             <td>{item.expired_date}</td>
                                             <td>{item.stock}</td>
                                             <td className='d-flex align-items-center gap-4 justify-content-center'>
-                                               
+
                                                 {
-                                                    user.role === 'admin'? <>
-                                                    <Link to={`/admin/medicine/update/${item.id}`}><EditIcon /></Link>
-                                                    <a href='#' onClick={() => medicineDelete(item.id)} className='text-danger'><DeleteIcon /></a>
-                                                    <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
-                                                    </>: <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
+                                                    user.role === 'admin' ? <>
+                                                        <Link to={`/admin/medicine/update/${item.id}`}><EditIcon /></Link>
+                                                        <a href='#' onClick={() => medicineDelete(item.id)} className='text-danger'><DeleteIcon /></a>
+                                                        <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
+                                                    </> : <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
                                                 }
-                                                
+
                                             </td>
                                         </tr>
                                     )
@@ -427,10 +433,10 @@ const ManageMedicine = () => {
                                     {
                                         orderType === 'sell' ? <Form.Group>
                                             <lebel className="mb-2">Selling Price</lebel>
-                                            <Form.Control type="number" name='selling_price' placeholder='Selling Price'/>
+                                            <Form.Control type="number" name='selling_price' placeholder='Selling Price' />
                                         </Form.Group> : <Form.Group>
                                             <lebel className="mb-2">Purchase Price</lebel>
-                                            <Form.Control type="number" name='purchase_price' placeholder='Purchase Price'/>
+                                            <Form.Control type="number" name='purchase_price' placeholder='Purchase Price' />
                                         </Form.Group>
                                     }
 
@@ -465,6 +471,7 @@ const ManageMedicine = () => {
                     </div>
                 </Modal.Body>
             </Modal>
+
         </div>
     );
 };
