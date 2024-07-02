@@ -13,7 +13,7 @@ const EmailVerified = () => {
 
     const handleRequest = async () => {
         try {
-            const response = await axios.post('http://testapi.web-builderit.com/api/email-verified', {
+            const response = await axios.post('https://testapi.web-builderit.com/api/email-verified', {
                 token,
                 email
             });

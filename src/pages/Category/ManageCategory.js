@@ -16,7 +16,7 @@ const ManageCategory = () => {
     const getCategory = async () => {
 
         try {
-            const response = await axios.get('http://testapi.web-builderit.com/api/category', {
+            const response = await axios.get('https://testapi.web-builderit.com/api/category', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -34,7 +34,7 @@ const ManageCategory = () => {
     const categoryDelete = async (id) => {
 
         try {
-            const response = await axios.get(`http://testapi.web-builderit.com/api/category/delete/${id=id}`, {
+            const response = await axios.get(`https://testapi.web-builderit.com/api/category/delete/${id=id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },

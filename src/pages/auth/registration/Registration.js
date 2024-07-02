@@ -16,7 +16,7 @@ const Registration = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://testapi.web-builderit.com/api/sign_up', {
+            const response = await axios.post('https://testapi.web-builderit.com/api/sign_up', {
                 name: event.target.name.value,
                 email: event.target.email.value,
                 password: event.target.password.value,

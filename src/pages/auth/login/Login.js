@@ -16,7 +16,7 @@ const Login = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://testapi.web-builderit.com/api/user_login', {
+            const response = await axios.post('https://testapi.web-builderit.com/api/user_login', {
                 email: event.target.email.value,
                 password: event.target.password.value,
             });

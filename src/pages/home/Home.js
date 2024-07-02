@@ -10,7 +10,7 @@ const Home = () => {
     const getOrders = async () => {
 
         try {
-            const response = await axios.get('http://testapi.web-builderit.com/api/dashboard/data', {
+            const response = await axios.get('https://testapi.web-builderit.com/api/dashboard/data', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },

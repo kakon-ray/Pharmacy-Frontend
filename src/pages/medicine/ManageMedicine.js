@@ -39,7 +39,7 @@ const ManageMedicine = () => {
     const getMedicine = async () => {
 
         try {
-            const response = await axios.get('http://testapi.web-builderit.com/api/medicine', {
+            const response = await axios.get('https://testapi.web-builderit.com/api/medicine', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -59,7 +59,7 @@ const ManageMedicine = () => {
     const medicineDelete = async (id) => {
 
         try {
-            const response = await axios.get(`http://testapi.web-builderit.com/api/medicine/delete/${id = id}`, {
+            const response = await axios.get(`https://testapi.web-builderit.com/api/medicine/delete/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -125,7 +125,7 @@ const ManageMedicine = () => {
         const getSpecificMedicine = async () => {
 
             try {
-                const response = await axios.get(`http://testapi.web-builderit.com/api/medicine/getitem/${id = id}`, {
+                const response = await axios.get(`https://testapi.web-builderit.com/api/medicine/getitem/${id = id}`, {
                     headers: {
                         Authorization: 'Bearer' + ' ' + token,
                     },
@@ -192,7 +192,7 @@ const ManageMedicine = () => {
 
 
         try {
-            const response = await axios.post('http://testapi.web-builderit.com/api/order', {
+            const response = await axios.post('https://testapi.web-builderit.com/api/order', {
                 category_id,
                 company_id,
                 medicine_id,

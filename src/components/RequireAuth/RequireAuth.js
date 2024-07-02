@@ -17,7 +17,7 @@ const RequireAuth = ({ children }) => {
     const getToken = async () => {
 
       try {
-        const response = await axios.get(`http://testapi.web-builderit.com/api/me/${mytoken}`, {
+        const response = await axios.get(`https://testapi.web-builderit.com/api/me/${mytoken}`, {
           headers: {
             Authorization: 'Bearer' + ' ' + mytoken,
           },

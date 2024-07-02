@@ -11,7 +11,7 @@ const PasswordReset = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://testapi.web-builderit.com/api/reset_password', {
+            const response = await axios.post('https://testapi.web-builderit.com/api/reset_password', {
                 email: event.target.email.value,
             });
 

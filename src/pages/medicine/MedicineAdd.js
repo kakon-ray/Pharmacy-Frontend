@@ -17,7 +17,7 @@ const MedicineAdd = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://testapi.web-builderit.com/api/medicine/add', {
+            const response = await axios.post('https://testapi.web-builderit.com/api/medicine/add', {
                 medicine_name: event.target.medicine_name.value,
                 category_id: event.target.category_id.value,
                 company_id: event.target.company_id.value,
@@ -52,7 +52,7 @@ const MedicineAdd = () => {
     const getCompanyCategory= async () => {
 
         try {
-            const response = await axios.get(`http://testapi.web-builderit.com/api/get/company/category`, {
+            const response = await axios.get(`https://testapi.web-builderit.com/api/get/company/category`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },

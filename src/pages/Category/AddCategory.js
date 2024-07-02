@@ -16,7 +16,7 @@ const AddCategory = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://testapi.web-builderit.com/api/category/add', {
+            const response = await axios.post('https://testapi.web-builderit.com/api/category/add', {
                 category_name: event.target.category_name.value,
             }, {
                 headers: {
