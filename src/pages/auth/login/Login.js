@@ -30,7 +30,7 @@ const Login = () => {
                     navigate("/user/manage/medicine");
                    
                 }else{
-                    navigate("/admin");
+                    navigate("/");
                 }
                
                 

@@ -37,7 +37,7 @@ function App() {
 
       <Routes>
       <Route path='registration' element={< Registration />} />
-      <Route path='/' element={< Login />} />
+      <Route path='/login' element={< Login />} />
       <Route path='admin/emailverified' element={< EmailVerified />} />
       <Route path='password/reset' element={< PasswordReset />} />
       <Route path='password/reset/submit-form' element={< PasswordResetSubmit />} />
@@ -47,9 +47,8 @@ function App() {
       <Route path='manage/order' element={<UserAuth>< ManageOrder /></UserAuth>} />
       </Route>
 
-        <Route path="/admin" element={<RequireAuth><Dashboard /></RequireAuth>}>
+        <Route path="/" element={<RequireAuth><Dashboard /></RequireAuth>}>
           <Route index element={< Home />} />
-
           <Route path='category' element={<RequireAuth>< ManageCategory /></RequireAuth>} />
           <Route path='category/add' element={<RequireAuth>< AddCategory /></RequireAuth>} />
           <Route path='category/update/:id' element={<RequireAuth>< UpdateCategory /></RequireAuth>} />

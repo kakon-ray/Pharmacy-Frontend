@@ -48,15 +48,17 @@ const RequireAuth = ({ children }) => {
 
   }, [mytoken]);
 
-  if (loading) {
+
+  if (loading && mytoken) {
     return <Loading />
   }
+
 
   if (user?.role === 'admin' || user?.role !== 'user') {
     return children;
   }
   else{
-    return <Navigate to="/" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
     
 

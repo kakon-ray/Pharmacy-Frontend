@@ -24,7 +24,7 @@ const Sidebar = () => {
     if (getToken) {
       localStorage.removeItem('token');
       setToken({})
-      navigate("/");
+      navigate("/login");
     }
 
   }
@@ -40,41 +40,41 @@ const Sidebar = () => {
         {
           token.role === 'admin' ? <>
             <CustomLink
-              to='/admin'
+              to='/'
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
             </CustomLink>
 
-            <CustomLink to='/admin/manage/order'>
+            <CustomLink to='/manage/order'>
               <UsersIcon /> <span className='ps-2'>Manage Order</span>
             </CustomLink>
 
-            <CustomLink to='/admin/category'>
+            <CustomLink to='/category'>
               <Category /> <span className='ps-2'>Category</span>
             </CustomLink>
 
-            <CustomLink to='/admin/category/add'>
+            <CustomLink to='/category/add'>
               <Create /> <span className='ps-2'>Add Category</span>
             </CustomLink>
 
-            <CustomLink to='/admin/company'>
+            <CustomLink to='/company'>
               <Category /> <span className='ps-2'>Company</span>
             </CustomLink>
 
-            <CustomLink to='/admin/company/add'>
+            <CustomLink to='/company/add'>
               <Create /> <span className='ps-2'>Add Company</span>
             </CustomLink>
 
-            <CustomLink to='/admin/medicine'>
+            <CustomLink to='/medicine'>
               <Medicine /> <span className='ps-2'>Medicine</span>
             </CustomLink>
 
-            <CustomLink to='/admin/medicine/add'>
+            <CustomLink to='/medicine/add'>
               <Create /> <span className='ps-2'>Medicine Add</span>
             </CustomLink>
 
-            <CustomLink to='/admin/manage/user'>
+            <CustomLink to='/manage/user'>
               <UsersIcon /> <span className='ps-2'>Manage Users</span>
             </CustomLink>
           </> : <>

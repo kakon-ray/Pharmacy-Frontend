@@ -50,7 +50,7 @@ const EmailVerified = () => {
                         <h4 className="alert-heading">Well done!</h4>
                         <p>{response}</p>
                         <hr />
-                        <Link to='/' className='nav-link'>Login Your Account</Link>
+                        <Link to='/login' className='nav-link'>Login Your Account</Link>
                     </div>
                    
                 </div>

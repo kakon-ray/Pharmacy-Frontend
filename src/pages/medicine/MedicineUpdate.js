@@ -85,7 +85,7 @@ const MedicineUpdate = () => {
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Medicine Add</h2>
                     <div>
-                        <Link to="/admin/medicine" className='btn btn-primary'> Manage Medicine</Link>
+                        <Link to="/medicine" className='btn btn-primary'> Manage Medicine</Link>
                     </div>
                 </div>
                 <form onSubmit={handleUpdate}>

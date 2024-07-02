@@ -53,7 +53,7 @@ const AddCompany = () => {
                         <div className='py-4 d-flex justify-content-between'>
                             <h2 className="text-secondary">Company Add</h2>
                             <div>
-                                <Link to="/admin/company" className='btn btn-primary'> Manage Company</Link>
+                                <Link to="/company" className='btn btn-primary'> Manage Company</Link>
                             </div>
                         </div>
                         <form onSubmit={handleSubmit}>

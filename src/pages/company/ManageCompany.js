@@ -70,7 +70,7 @@ const ManageCompany = () => {
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Manage company</h2>
                     <div>
-                        <Link to="/admin/company/add" className='btn btn-primary'> + Add company</Link>
+                        <Link to="/company/add" className='btn btn-primary'> + Add company</Link>
                     </div>
                 </div>
                 <Table striped bordered hover>

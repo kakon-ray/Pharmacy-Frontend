@@ -12,6 +12,8 @@ const Navbar = ({setIsOn,isOn}) => {
         setIsOn(!isOn);
     }
 
+
+
     return (
         <div>
             <nav id="main-navbar" className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -33,7 +35,7 @@ const Navbar = ({setIsOn,isOn}) => {
 
 
                     {
-                        token.role === 'admin' ? <Link className="navbar-brand" to="/admin">
+                        token.role === 'admin' ? <Link className="navbar-brand" to="/">
                             <img
                                 src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                                 height="25"
