@@ -49,7 +49,7 @@ const AddCategory = () => {
                         <div className='py-4 d-flex justify-content-between'>
                             <h2 className="text-secondary">Category Add</h2>
                             <div>
-                                <Link to="/admin/category" className='btn btn-primary'> Manage Category</Link>
+                                <Link to="/category" className='btn btn-primary'> Manage Category</Link>
                             </div>
                         </div>
                         <form onSubmit={handleSubmit}>

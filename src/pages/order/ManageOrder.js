@@ -81,7 +81,7 @@ const ManageCompany = () => {
                     <h2 className="text-secondary">Order History</h2>
                     {
                         user.role === 'admin' ?  <div>
-                        <Link to="/admin/medicine" className='btn btn-primary'> + Add Order</Link>
+                        <Link to="/medicine" className='btn btn-primary'> + Add Order</Link>
                     </div>: ''
                     }
                    

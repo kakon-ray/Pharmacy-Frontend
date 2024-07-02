@@ -70,7 +70,7 @@ const ManageCategory = () => {
                 <div className='py-4 d-flex justify-content-between'>
                     <h2 className="text-secondary">Manage Category</h2>
                     <div>
-                        <Link to="/admin/category/add" className='btn btn-primary'> + Add Category</Link>
+                        <Link to="/category/add" className='btn btn-primary'> + Add Category</Link>
                     </div>
                 </div>
                 <Table striped bordered hover>
