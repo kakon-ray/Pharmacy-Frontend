@@ -54,7 +54,7 @@ const RequireAuth = ({ children }) => {
   }
 
 
-  if (user?.role === 'admin' || user?.role !== 'user') {
+  if (user?.role === 'admin') {
     return children;
   }
   else{

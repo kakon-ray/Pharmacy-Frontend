@@ -10,7 +10,7 @@ import AddIcon from '../../components/svg/AddIcon'
 import CloseModal from '../../components/svg/CloseModal'
 import Loading from '../../components/loading/Loading'
 import './ManageMedicine.css'
-
+import { usePDF } from 'react-to-pdf';
 
 import { Checkbox, Label, Modal, TextInput } from "flowbite-react"
 import { TokenContext } from '../../context/TokenContext';
@@ -35,6 +35,8 @@ const ManageMedicine = () => {
 
 
     const token = localStorage.getItem('token')
+
+    const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
 
     const getMedicine = async () => {
 
@@ -249,8 +251,8 @@ const ManageMedicine = () => {
 
     }
 
-    if(!data){
-        return <Loading/>
+    if (!data) {
+        return <Loading />
     }
 
 
@@ -260,14 +262,6 @@ const ManageMedicine = () => {
 
             <div className='card p-3 rounded-0 border-0'>
                 <div className='py-4 d-flex justify-content-between'>
-                    <h2 className="text-secondary">Manage Medicine</h2>
-                    {user.role === 'admin' ? <div>
-                        <Link to="/medicine/add" className='btn btn-primary'> + Add Medicine</Link>
-                    </div> : ''}
-
-                </div>
-
-                <div className='d-flex justify-content-between my-4 responsive-filter'>
                     <div className='d-flex align-items-center gap-2'>
 
                         <input
@@ -286,79 +280,94 @@ const ManageMedicine = () => {
                         />
 
                         <button className='btn btn-primary' onClick={handleFilter}>Filter</button>
-                    </div>
 
-                    <div className='search-medicine'>
-                        <Form.Control type="text" name='search_medicine' placeholder="Search Medicine"
-                            onChange={(event) => handleSearchChange(event)} />
+                    </div>
+                    <div className='d-flex align-items-center gap-3'>
+                        <button className='btn btn-primary' onClick={() => toPDF()}>Download PDF</button>
+                        {user.role === 'admin' ? <div>
+                            <Link to="/medicine/add" className='btn btn-primary'> + Add Medicine</Link>
+                        </div> : ''}
                     </div>
                 </div>
-                <div className='table-responsive'>
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr className='text-center'>
-                                <th>No</th>
-                                <th>Medicine Name</th>
-                                <th>Category</th>
-                                <th>Company</th>
-                                <th>Purchase Date</th>
-                                <th>Purchase Price</th>
-                                <th>Selling Price</th>
-                                <th>Expired Date</th>
-                                <th>Stock</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                data?.map((item, index) => {
-                                    return (
-                                        <tr className='text-center' key={index}>
-                                            <td>{index + 1}</td>
-                                            <td>{item.medicine_name}</td>
-                                            <td>{item?.category?.category_name}</td>
-                                            <td>{item?.company?.company_name}</td>
-                                            <td>{item.purchase_date}</td>
-                                            <td>{item.purchase_price}</td>
-                                            <td>{item.selling_price}</td>
-                                            <td>{item.expired_date}</td>
-                                            <td>{item.stock}</td>
-                                            <td className='d-flex align-items-center gap-4 justify-content-center'>
 
-                                                {
-                                                    user.role === 'admin' ? <>
-                                                        <Link to={`/admin/medicine/update/${item.id}`}><EditIcon /></Link>
-                                                        <a href='#' onClick={() => medicineDelete(item.id)} className='text-danger'><DeleteIcon /></a>
-                                                        <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
-                                                    </> : <a href='#' onClick={() => orderOperation(item.id)} className='text-primary'><AddIcon /></a>
-                                                }
+                <div ref={targetRef} className='p-3'>
+                    <div className='d-flex justify-content-between my-4 responsive-filter'>
 
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
+                        <h2 className="text-secondary">Manage Medicine</h2>
 
-                            <tr className='text-center'>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td className='font-weight-bold'>Total</td>
-                                <td className='font-weight-bold'>{totalPurchasePrice} Tk</td>
-                                <td className='font-weight-bold'>{totalSellingPrice} Tk</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                        <div className='search-medicine'>
+                            <Form.Control type="text" name='search_medicine' placeholder="Search Medicine"
+                                onChange={(event) => handleSearchChange(event)} />
+                        </div>
+                    </div>
 
-                        </tbody>
-                    </Table>
+                    <div className='table-responsive'>
+                        <Table striped bordered hover className='table-dark'>
+                            <thead>
+                                <tr className='text-center'>
+                                    <th>No</th>
+                                    <th>Medicine Name</th>
+                                    <th>Category</th>
+                                    <th>Company</th>
+                                    <th>Purchase Date</th>
+                                    <th>Purchase Price</th>
+                                    <th>Selling Price</th>
+                                    <th>Expired Date</th>
+                                    <th>Stock</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    data?.map((item, index) => {
+                                        return (
+                                            <tr className='text-center' key={index}>
+                                                <td>{index + 1}</td>
+                                                <td>{item.medicine_name}</td>
+                                                <td>{item?.category?.category_name}</td>
+                                                <td>{item?.company?.company_name}</td>
+                                                <td>{item.purchase_date}</td>
+                                                <td>{item.purchase_price}</td>
+                                                <td>{item.selling_price}</td>
+                                                <td>{item.expired_date}</td>
+                                                <td>{item.stock}</td>
+                                                <td className='d-flex align-items-center gap-4 justify-content-center'>
+
+                                                    {
+                                                        user.role === 'admin' ? <>
+                                                            <Link to={`/admin/medicine/update/${item.id}`} className='text-light'><EditIcon /></Link>
+                                                            <a href='#' onClick={() => medicineDelete(item.id)} className='text-light'><DeleteIcon /></a>
+                                                            <a href='#' onClick={() => orderOperation(item.id)} className='text-light'><AddIcon /></a>
+                                                        </> : <a href='#' onClick={() => orderOperation(item.id)} className='text-light'><AddIcon /></a>
+                                                    }
+
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+
+                                <tr className='text-center'>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td className='font-weight-bold'>Total</td>
+                                    <td className='font-weight-bold'>{totalPurchasePrice} Tk</td>
+                                    <td className='font-weight-bold'>{totalSellingPrice} Tk</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                        </Table>
 
 
+                    </div>
                 </div>
             </div>
-            <Modal show={openModal} size="md" className='mt-5 w-100 mx-auto' onClose={onCloseModal} popup>
+            <Modal show={openModal} size="md" className='mt-5 w-50 mx-auto' onClose={onCloseModal} popup>
                 <div className='d-flex justify-content-end'>
                     <a href='#' onClick={() => onCloseModal(true)} className='text-primary p-4'><CloseModal /></a>
                 </div>
@@ -447,7 +456,7 @@ const ManageMedicine = () => {
                                 <div className='col-lg-3'>
                                     <Form.Group>
                                         <lebel className="mb-2">Expired Date</lebel>
-                                        <Form.Control type="date" name='expired_date' required />
+                                        <Form.Control type="date" name='expired_date'/>
                                     </Form.Group>
 
                                 </div>

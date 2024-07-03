@@ -48,7 +48,7 @@ function App() {
       </Route>
 
         <Route path="/" element={<RequireAuth><Dashboard /></RequireAuth>}>
-          <Route index element={< Home />} />
+          <Route index element={<RequireAuth>< Home /></RequireAuth>} />
           <Route path='category' element={<RequireAuth>< ManageCategory /></RequireAuth>} />
           <Route path='category/add' element={<RequireAuth>< AddCategory /></RequireAuth>} />
           <Route path='category/update/:id' element={<RequireAuth>< UpdateCategory /></RequireAuth>} />
