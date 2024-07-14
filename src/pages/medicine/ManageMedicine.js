@@ -321,7 +321,7 @@ const ManageMedicine = () => {
                                 {
                                     data?.map((item, index) => {
                                         return (
-                                            <tr className='text-center' key={index}>
+                                            <tr className='text-center' key={item.id}>
                                                 <td>{index + 1}</td>
                                                 <td>{item.medicine_name}</td>
                                                 <td>{item?.category?.category_name}</td>
@@ -335,7 +335,7 @@ const ManageMedicine = () => {
 
                                                     {
                                                         user.role === 'admin' ? <>
-                                                            <Link to={`/admin/medicine/update/${item.id}`} className='text-light'><EditIcon /></Link>
+                                                            <Link to={`/medicine/update/${item.id}`} className='text-light'><EditIcon /></Link>
                                                             <a href='#' onClick={() => medicineDelete(item.id)} className='text-light'><DeleteIcon /></a>
                                                             <a href='#' onClick={() => orderOperation(item.id)} className='text-light'><AddIcon /></a>
                                                         </> : <a href='#' onClick={() => orderOperation(item.id)} className='text-light'><AddIcon /></a>
@@ -381,10 +381,9 @@ const ManageMedicine = () => {
                                     <Form.Group>
                                         <lebel className="mb-2">Medicine Select</lebel>
                                         <select className="form-select" name='medicine_id' aria-label=".form-select-lg example" required>
-                                            <option >Select Medicine Company</option>
                                             {
                                                 medicine?.map(item => {
-                                                    return <option value={item.id} selected={item.id === medicineItem.id}>{item.medicine_name}</option>
+                                                    return <option key={item.id} value={item.id} selected={item.id === medicineItem.id}>{item.medicine_name}</option>
                                                 })
                                             }
 
@@ -401,7 +400,7 @@ const ManageMedicine = () => {
                                             <option selected>Select Medicine Company</option>
                                             {
                                                 companyes?.map(company => {
-                                                    return <option value={company.id} selected={company.id === medicineItem.company_id}>{company.company_name}</option>
+                                                    return <option key={company.id} value={company.id} selected={company.id === medicineItem.company_id}>{company.company_name}</option>
                                                 })
                                             }
 
@@ -418,7 +417,7 @@ const ManageMedicine = () => {
                                             <option selected>Select Medicine Category</option>
                                             {
                                                 categories.map(category => {
-                                                    return <option value={category.id} selected={category.id === medicineItem.category_id}>{category.category_name}</option>
+                                                    return <option key={category.id} value={category.id} selected={category.id === medicineItem.category_id}>{category.category_name}</option>
                                                 })
                                             }
                                         </select>

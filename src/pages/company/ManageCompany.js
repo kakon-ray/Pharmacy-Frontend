@@ -91,7 +91,7 @@ const ManageCompany = () => {
                                         <td>{item.company_name}</td>
                                         <td>{item.company_slug}</td>
                                         <td className='d-flex align-items-center gap-4 justify-content-center'>
-                                            <Link to={`/admin/company/update/${item.id}`}><EditIcon/></Link>
+                                            <Link to={`/company/update/${item.id}`}><EditIcon/></Link>
                                             <a href='#' onClick={()=>companyDelete(item.id)} className='text-danger'><DeleteIcon/></a>
                                         </td>
                                     </tr>

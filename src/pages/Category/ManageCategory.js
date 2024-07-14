@@ -91,7 +91,7 @@ const ManageCategory = () => {
                                         <td>{item.category_name}</td>
                                         <td>{item.category_slug}</td>
                                         <td className='d-flex align-items-center gap-4 justify-content-center'>
-                                            <Link to={`/admin/category/update/${item.id}`}><EditIcon/></Link>
+                                            <Link to={`/category/update/${item.id}`}><EditIcon/></Link>
                                             <a href='#' onClick={()=>categoryDelete(item.id)} className='text-danger'><DeleteIcon/></a>
                                         </td>
                                     </tr>
