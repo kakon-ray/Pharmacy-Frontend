@@ -17,7 +17,7 @@ const AddCompany = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('https://testapi.web-builderit.com/api/company/add', {
+            const response = await axios.post('http://127.0.0.1:8000/api/company/add', {
                 company_name: event.target.company_name.value,
             }, {
                 headers: {

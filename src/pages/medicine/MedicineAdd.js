@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,13 +11,13 @@ const MedicineAdd = () => {
     const [categories, setCategory] = useState([]);
     const [company, setCompany] = useState([]);
     const token = localStorage.getItem('token')
-
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('https://testapi.web-builderit.com/api/medicine/add', {
+            const response = await axios.post('http://127.0.0.1:8000/api/medicine/add', {
                 medicine_name: event.target.medicine_name.value,
                 category_id: event.target.category_id.value,
                 company_id: event.target.company_id.value,
@@ -35,6 +35,7 @@ const MedicineAdd = () => {
 
             if (response.data.success) {
                 toast.success(response.data.msg)
+                navigate("/medicine");
             } else{
                 toast.error(response.data.msg)
             }
@@ -52,7 +53,7 @@ const MedicineAdd = () => {
     const getCompanyCategory= async () => {
 
         try {
-            const response = await axios.get(`https://testapi.web-builderit.com/api/get/company/category`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/get/company/category`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -88,15 +89,15 @@ const MedicineAdd = () => {
                         <div className='col-lg-6'>
                             <Form.Group>
                                 <lebel className="mb-2">Medicine Name</lebel>
-                                <Form.Control type="text" name='medicine_name' placeholder="Medicine Name" required />
+                                <Form.Control type="text" name='medicine_name' placeholder="Medicine Name"  />
                             </Form.Group>
                         </div>
 
                         <div className='col-lg-6'>
                             <Form.Group>
                                 <lebel className="mb-2">Company Name</lebel>
-                                <select className="form-select" name='company_id' aria-label=".form-select-lg example" required>
-                                    <option selected>Select Medicine Company</option>
+                                <select className="form-select" name='company_id' aria-label=".form-select-lg example">
+                                    <option value='' selected>Select Medicine Company</option>
                                     {company.map(item => {
                                         return <option value={item.id}>{item.company_name}</option>
                                     })}
@@ -109,8 +110,8 @@ const MedicineAdd = () => {
                         <div className='col-lg-3'>
                             <Form.Group>
                                 <lebel className="mb-2">Category</lebel>
-                                <select className="form-select" name='category_id' aria-label=".form-select-lg example" required>
-                                    <option selected>Select Medicine Category</option>
+                                <select className="form-select" name='category_id' aria-label=".form-select-lg example">
+                                    <option value='' selected>Select Medicine Category</option>
                                     {
                                         categories.map(item => {
                                             return <option value={item.id}>{item.category_name}</option>

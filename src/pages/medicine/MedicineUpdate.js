@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,13 +13,15 @@ const MedicineUpdate = () => {
     const [categories, setCategory] = useState([]);
     const [companyes, setCompany] = useState([]);
 
+    const navigate = useNavigate();
+
     const token = localStorage.getItem('token')
     let { id } = useParams();
 
     const getSpecificMedicine = async () => {
 
         try {
-            const response = await axios.get(`https://testapi.web-builderit.com/api/medicine/getitem/${id = id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/getitem/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -45,7 +47,7 @@ const MedicineUpdate = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('https://testapi.web-builderit.com/api/medicine/edit', {
+            const response = await axios.post('http://127.0.0.1:8000/api/medicine/edit', {
                 medicine_name: event.target.medicine_name.value,
                 category_id: event.target.category_id.value,
                 company_id: event.target.company_id.value,
@@ -62,10 +64,12 @@ const MedicineUpdate = () => {
             });
 
          console.log(response)
+
             if (response.data.success) {
-                toast.success(response.data.success)
-            } else if (response.data.error) {
-                toast.error(response.data.error)
+                toast.success(response.data.msg)
+                navigate("/medicine");
+            } else{
+                toast.error(response.data.msg)
             }
 
 

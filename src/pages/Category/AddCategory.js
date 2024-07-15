@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,13 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddCategory = () => {
 
     const token = localStorage.getItem('token')
-
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('https://testapi.web-builderit.com/api/category/add', {
+            const response = await axios.post('http://127.0.0.1:8000/api/category/add', {
                 category_name: event.target.category_name.value,
             }, {
                 headers: {
@@ -24,11 +24,11 @@ const AddCategory = () => {
                 },
             });
 
-
             if (response.data.success) {
-                toast.success(response.data.success)
-            } else if (response.data.error) {
-                toast.error(response.data.error)
+                toast.success(response.data.msg)
+                navigate("/category");
+            } else{
+                toast.error(response.data.msg)
             }
 
 
@@ -57,7 +57,7 @@ const AddCategory = () => {
                                 <div className='col-lg-12'>
                                     <Form.Group>
                                         <lebel className="mb-2">Category Name</lebel>
-                                        <Form.Control type="text" name='category_name' placeholder="Category Name" required />
+                                        <Form.Control type="text" name='category_name' placeholder="Category Name" required/>
                                     </Form.Group>
                                 </div>
                             </div>

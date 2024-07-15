@@ -41,7 +41,7 @@ const ManageMedicine = () => {
     const getMedicine = async () => {
 
         try {
-            const response = await axios.get('https://testapi.web-builderit.com/api/medicine', {
+            const response = await axios.get('http://127.0.0.1:8000/api/medicine', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -61,7 +61,7 @@ const ManageMedicine = () => {
     const medicineDelete = async (id) => {
 
         try {
-            const response = await axios.get(`https://testapi.web-builderit.com/api/medicine/delete/${id = id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/medicine/delete/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -127,7 +127,7 @@ const ManageMedicine = () => {
         const getSpecificMedicine = async () => {
 
             try {
-                const response = await axios.get(`https://testapi.web-builderit.com/api/medicine/getitem/${id = id}`, {
+                const response = await axios.get(`http://127.0.0.1:8000/api/medicine/getitem/${id = id}`, {
                     headers: {
                         Authorization: 'Bearer' + ' ' + token,
                     },
@@ -162,18 +162,6 @@ const ManageMedicine = () => {
 
         //    console.log('Category ID=' + category_id + 'Company ID=' + company_id + 'Medicine ID=' + medicine_id + 'Quantity=' + quantity + 'Purchase Price=' + purchase_price + 'Selling Price=' + selling_price + 'Expired Date=' + expired_date + 'Order Type=' + order_type)
 
-        if (!category_id) {
-            toast.error('Please select Category')
-        } else if (!company_id) {
-            toast.error('Please select Company')
-        } else if (!medicine_id) {
-            toast.error('Please select Medicine')
-        } else if (!quantity) {
-            toast.error('Please select Quantity')
-        } else if (!expired_date) {
-            toast.error('Please select expired date')
-        }
-
 
         if (orderType === 'sell') {
             if (parseInt(quantity) > parseInt(medicineItem.stock)) {
@@ -194,7 +182,7 @@ const ManageMedicine = () => {
 
 
         try {
-            const response = await axios.post('https://testapi.web-builderit.com/api/order', {
+            const response = await axios.post('http://127.0.0.1:8000/api/order', {
                 category_id,
                 company_id,
                 medicine_id,
@@ -249,10 +237,6 @@ const ManageMedicine = () => {
 
         }
 
-    }
-
-    if (!data) {
-        return <Loading />
     }
 
 
@@ -396,8 +380,8 @@ const ManageMedicine = () => {
                                 <div className='col-lg-6'>
                                     <Form.Group>
                                         <lebel className="mb-2">Company Name</lebel>
-                                        <select className="form-select" name='company_id' aria-label=".form-select-lg example" required>
-                                            <option selected>Select Medicine Company</option>
+                                        <select className="form-select" name='company_id' aria-label=".form-select-lg example">
+                                            <option value='' selected>Select Medicine Company</option>
                                             {
                                                 companyes?.map(company => {
                                                     return <option key={company.id} value={company.id} selected={company.id === medicineItem.company_id}>{company.company_name}</option>
@@ -413,8 +397,8 @@ const ManageMedicine = () => {
                                 <div className='col-lg-3'>
                                     <Form.Group>
                                         <lebel className="mb-2">Category</lebel>
-                                        <select className="form-select" name='category_id' aria-label=".form-select-lg example" required>
-                                            <option selected>Select Medicine Category</option>
+                                        <select className="form-select" name='category_id' aria-label=".form-select-lg example">
+                                            <option value='' selected>Select Medicine Category</option>
                                             {
                                                 categories.map(category => {
                                                     return <option key={category.id} value={category.id} selected={category.id === medicineItem.category_id}>{category.category_name}</option>
@@ -428,8 +412,8 @@ const ManageMedicine = () => {
                                 <div className='col-lg-3'>
                                     <Form.Group>
                                         <lebel className="mb-2">Order Type</lebel>
-                                        <select className="form-select" name='order_type' onChange={e => setOrderType(e.target.value)} required>
-                                            <option selected>Select Type</option>
+                                        <select className="form-select" name='order_type' onChange={e => setOrderType(e.target.value)}>
+                                            <option value='' selected>Select Order Type</option>
                                             <option value="sell">Sell</option>
                                             <option value="buy">Buy</option>
                                         </select>

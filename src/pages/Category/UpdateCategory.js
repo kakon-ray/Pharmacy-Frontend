@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,11 +13,12 @@ const UpdateCategory = () => {
 
     const token = localStorage.getItem('token')
     let { id } = useParams();
+    const navigate = useNavigate();
 
     const getSpecificMedicine = async () => {
 
         try {
-            const response = await axios.get(`https://testapi.web-builderit.com/api/category/getitem/${id = id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/category/getitem/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -41,7 +42,7 @@ const UpdateCategory = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('https://testapi.web-builderit.com/api/category/edit', {
+            const response = await axios.post('http://127.0.0.1:8000/api/category/edit', {
                 category_name: event.target.category_name.value,
                 id: id,
             }, {
@@ -52,6 +53,7 @@ const UpdateCategory = () => {
 
             if (response.data.success) {
                 toast.success(response.data.msg)
+                navigate("/category");
             } else{
                 toast.error(response.data.msg)
             }

@@ -19,7 +19,7 @@ const ManageUser = () => {
     const getUserInfo = async () => {
 
         try {
-            const response = await axios.get('https://testapi.web-builderit.com/api/userinfo', {
+            const response = await axios.get('http://127.0.0.1:8000/api/userinfo', {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -37,7 +37,7 @@ const ManageUser = () => {
     const userPermission = async (id) => {
 
         try {
-            const response = await axios.get(`https://testapi.web-builderit.com/api/userpermission/${id = id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/userpermission/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
@@ -61,7 +61,7 @@ const ManageUser = () => {
     const canclePermission = async (id) => {
 
         try {
-            const response = await axios.get(`https://testapi.web-builderit.com/api/canclepermission/${id = id}`, {
+            const response = await axios.get(`http://127.0.0.1:8000/api/canclepermission/${id = id}`, {
                 headers: {
                     Authorization: 'Bearer' + ' ' + token,
                 },
